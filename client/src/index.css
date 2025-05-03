@@ -4,6 +4,7 @@
 @theme {
   --color-primary: #fac10e;
   --font-lex: "Lexend", sans-serif;
+  --font-poppins : "Poppins"
 }
 
 .active{

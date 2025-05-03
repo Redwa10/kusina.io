@@ -4,6 +4,7 @@ import Homepage from "./pages/Homepage";
 import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
 import Card from "./components/Card";
+import Home from "./pages/Home";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
           <Route index element={<Homepage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/test" element={<Card />} />
+          <Route path="/home" element={<Home />} />
         </Routes>
       </BrowserRouter>
     </div>
