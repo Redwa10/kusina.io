@@ -9,11 +9,13 @@ function Login() {
         <img width={310} height={198} src="logo-2.svg"></img>
         <form className="flex flex-col justify-center items-center">
           <input
+          autoComplete="username"
             className="w-[101%] bg-[#F1F1F1] p-[15px] text-[17px] rounded-[15px] outline-0 border-1 border-[#b4b4b4ee] mt-5"
             placeholder="username"
             type="text"
           />
           <input
+          autoComplete="current-password"
             className="w-[100%] bg-[#F1F1F1] p-[15px] text-[17px] rounded-[15px] outline-0 border-1 border-[#b4b4b4ee] mt-5"
             placeholder="password"
             type="password"
