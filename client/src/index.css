@@ -5,3 +5,7 @@
   --color-primary: #fac10e;
   --font-lex: "Lexend", sans-serif;
 }
+
+.active{
+  color: #fac10e;
+}
