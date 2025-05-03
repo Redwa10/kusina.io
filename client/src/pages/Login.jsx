@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import Button from "../components/Button";
 
 function Login() {
   return (
@@ -20,7 +19,7 @@ function Login() {
             type="password"
           />
           <button
-            className="w-[80%] border-1  text-center transition ease-in font-light text-xl  text-white bg-primary mt-8 px-7 py-3 rounded-[10px] hover:bg-white cursor-pointer hover:text-primary hover:border-primary">
+            className="w-[80%] border-1  text-center transition ease-in font-light text-xl  text-white bg-primary mt-8 px-7 py-3 rounded-[10px] hover:bg-white cursor-pointer hover:text-primary hover:border-primary drop-shadow-md">
             Login
           </button>
           <Link className="text-center font-lex text-[#464646] hover:underline mt-3.5" to={"/signup"}>don't have an account?</Link>
