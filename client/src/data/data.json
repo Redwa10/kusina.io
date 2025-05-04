@@ -5,7 +5,7 @@
         "name": "Pasta Carbonara",
         "category": "Main Course",
         "author": "John Doe",
-        "imageUrl": "food.jpg",
+        "imageUrl": "food.png",
         "ingredients": [
           { "name": "Spaghetti", "quantity": "1 lb", "unit": "" },
           { "name": "Pancetta", "quantity": "5 oz", "unit": "" },
@@ -29,7 +29,7 @@
         "name": "Chocolate Chip Cookies",
         "category": "Dessert",
         "author": "Jane Doe",
-        "imageUrl": "food.jpg",
+        "imageUrl": "food.png",
         "ingredients": [
           { "name": "All-Purpose Flour", "quantity": "2 1/4 cups", "unit": "" },
           { "name": "Baking Soda", "quantity": "1 tsp", "unit": "" },
@@ -60,7 +60,7 @@
         "name": "Chocolate Chip Cookies",
         "category": "Dessert",
         "author": "Jane Doe",
-        "imageUrl": "food.jpg",
+        "imageUrl": "food.png",
         "ingredients": [
           { "name": "All-Purpose Flour", "quantity": "2 1/4 cups", "unit": "" },
           { "name": "Baking Soda", "quantity": "1 tsp", "unit": "" },
@@ -91,7 +91,7 @@
         "name": "Chocolate Chip Cookies",
         "category": "Dessert",
         "author": "Jane Doe",
-        "imageUrl": "food.jpg",
+        "imageUrl": "food.png",
         "ingredients": [
           { "name": "All-Purpose Flour", "quantity": "2 1/4 cups", "unit": "" },
           { "name": "Baking Soda", "quantity": "1 tsp", "unit": "" },

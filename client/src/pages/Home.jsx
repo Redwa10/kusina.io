@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
 import Nav from "../components/Nav";
 import Card from "../components/Card";
+import { useRecipe } from "../contexts/RecipesContext";
+
 
 function Home() {
+  const {recipes,isLoading} =useRecipe()
   return (
     <main>
       <Nav />
@@ -21,13 +24,11 @@ function Home() {
           </Link>
         </div>
         <div className="grid grid-cols-4 justify-start justify-self-start gap-x-10 gap-y-14 mt-5">
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+      {
+       isLoading ? <p>loading......</p>:recipes.map(recipe=>{
+        return <Card recipe={recipe} />
+       })
+      }
         </div>
       </section>
     </main>

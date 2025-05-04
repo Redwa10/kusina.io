@@ -1,14 +1,14 @@
-function Card() {
+function Card({recipe}) {
     //301*187
   return (
     <div className=" drop-shadow-xl  max-w-fit">
       <div className="w-[280px] bg-black rounded-t-[20px]  ">
-        <img src="food.png" alt="food" />
+        <img src={`${recipe.imageUrl}`} alt="food" />
       </div>
       <div className="bg-white rounded-b-[20px] ">
-        <p className="font-bold ml-3 pt-2 text-[13px]">Tramisu Cake With Strawberry Sauce</p>
+        <p className="font-bold ml-3 pt-2 text-[13px]">{recipe.name}</p>
         <p className="mt-0.5 ml-3 font-bold text-primary text-[18px]">
-          12<span className="font-normal text-[#a6a6a6] text-[16px] "> ingredient</span>
+          {recipe.ingredients.length}<span className="font-normal text-[#a6a6a6] text-[16px] "> ingredient</span>
         </p>
         <div className="flex justify-between w-[90%] m-auto items-center pb-4 px-1 py-2">
           <img className="cursor-pointer hover:fill-amber-50" src="love.svg" alt="heart" />
