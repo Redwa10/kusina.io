@@ -1,7 +1,7 @@
 function Card({recipe}) {
     //301*187
   return (
-    <div className=" drop-shadow-xl  max-w-fit">
+    <div className=" animate-pop drop-shadow-xl  max-w-fit">
       <div className="w-[280px] max-h-[187px] overflow-hidden bg-black rounded-t-[20px]  ">
         <img className="w-full h-full object-cover object-center" width={280} height={150} src={`${recipe.imageUrl}`} alt="food" />
       </div>
@@ -12,7 +12,7 @@ function Card({recipe}) {
         </p>
         <div className="flex justify-between w-[90%] m-auto items-center pb-4 px-1 py-2">
           <img className="cursor-pointer hover:fill-amber-50" src="love.svg" alt="heart" />
-          <button className="drop-shadow-md text-center mt-0.5 transition ease-in font-light text-md  text-white bg-primary border-1 border-primary px-3 py-1 rounded-[100px] hover:bg-white cursor-pointer hover:text-primary">
+           <button className="drop-shadow-md text-center mt-0.5 transition ease-in font-light text-md  text-white bg-primary border-1 border-primary px-3 py-1 rounded-[100px] hover:bg-white cursor-pointer hover:text-primary">
             Read more
           </button>
         </div>
