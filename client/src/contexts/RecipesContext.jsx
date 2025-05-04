@@ -31,11 +31,11 @@ function RecipesContext({ children }) {
     getData();
   }, []);
 
-  //   setInterval(() => {
-  //     dispatch({ type: "loading" });
-  //   }, 3000);
+function updateRecipes(data){
+  dispatch({type:"recipes",payload:data})
+}
   return (
-    <recipesProvider.Provider value={{ recipes, isLoading }}>
+    <recipesProvider.Provider value={{ recipes, isLoading,updateRecipes }}>
       {children}
     </recipesProvider.Provider>
   );
@@ -45,4 +45,4 @@ function useRecipe() {
   return context;
 }
 
-export { RecipesContext, useRecipe };
+export { RecipesContext, useRecipe};

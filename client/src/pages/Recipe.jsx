@@ -18,7 +18,7 @@ function Recipe() {
         <span>Back</span>
       </div>
 
-      {recipes.length && (
+      {!recipes.length ?<div>loading</div>: (
         <section className="w-[80%] m-auto mt-[25px] mb-20">
           <h1 className="font-roboto text-[35px] font-bold tracking-wider ">
             {recipe.name.toUpperCase()}
