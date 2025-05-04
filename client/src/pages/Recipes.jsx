@@ -35,7 +35,7 @@ function Recipes() {
       </section>
       <section className="grid grid-cols-4 justify-start justify-self-start gap-x-10 gap-y-14 mt-10 w-[80%] m-auto">
         {filtered.map(recipe=>{
-            return <Card recipe={recipe} />
+            return <Card key={recipe.id} recipe={recipe} />
         })}
       </section>
     </main>

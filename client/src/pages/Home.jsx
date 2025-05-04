@@ -26,7 +26,7 @@ function Home() {
         <div className="grid grid-cols-4 justify-start justify-self-start gap-x-10 gap-y-14 mt-5">
       {
        isLoading ? <p>loading......</p>:recipes.map(recipe=>{
-        return <Card recipe={recipe} />
+        return <Card key={recipe.id} recipe={recipe} />
        })
       }
         </div>

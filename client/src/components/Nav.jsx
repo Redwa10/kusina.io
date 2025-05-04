@@ -1,12 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import Button from "./Button";
 
-function Nav() {
+function Nav({src="logo-2.svg"}) {
   return (
     <header className="w-[80%] m-auto mt-5">
       <nav className="flex justify-between items-center">
         <Link to={"/home"} id="logo">
-          <img width={170} src="logo-2.svg" alt="" />
+          <img width={170} src={src} alt="" />
         </Link>
         <div className="flex  gap-6 items-center">
           <ul className="flex gap-5 text-[16.5px] text-[#232323]">
