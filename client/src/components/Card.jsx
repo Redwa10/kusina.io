@@ -2,8 +2,8 @@ function Card({recipe}) {
     //301*187
   return (
     <div className=" drop-shadow-xl  max-w-fit">
-      <div className="w-[280px] bg-black rounded-t-[20px]  ">
-        <img src={`${recipe.imageUrl}`} alt="food" />
+      <div className="w-[280px] max-h-[187px] overflow-hidden bg-black rounded-t-[20px]  ">
+        <img className="w-full h-full object-cover object-center" width={280} height={150} src={`${recipe.imageUrl}`} alt="food" />
       </div>
       <div className="bg-white rounded-b-[20px] ">
         <p className="font-bold ml-3 pt-2 text-[13px]">{recipe.name}</p>

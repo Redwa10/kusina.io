@@ -1,121 +1,186 @@
 {
     "recipes": [
       {
-        "id": "pasta-carbonara",
-        "name": "Pasta Carbonara",
+        "id": "vegetable-stir-fry",
+        "name": "Vegetable Stir Fry",
         "category": "Main Course",
-        "author": "John Doe",
-        "imageUrl": "food.png",
+        "author": "Alex Smith",
+        "imageUrl": "vegi.jpg",
         "ingredients": [
-          { "name": "Spaghetti", "quantity": "1 lb", "unit": "" },
-          { "name": "Pancetta", "quantity": "5 oz", "unit": "" },
-          { "name": "Eggs", "quantity": "4", "unit": "" },
-          { "name": "Parmesan Cheese", "quantity": "1/2 cup", "unit": "" },
-          { "name": "Black Pepper", "quantity": "to taste", "unit": "" },
+          { "name": "Broccoli", "quantity": "2 cups", "unit": "" },
+          { "name": "Bell Peppers", "quantity": "1", "unit": "" },
+          { "name": "Carrots", "quantity": "2", "unit": "" },
+          { "name": "Soy Sauce", "quantity": "3 tbsp", "unit": "" },
+          { "name": "Garlic", "quantity": "2 cloves", "unit": "" }
+        ],
+        "instructions": [
+          "Chop vegetables.",
+          "Heat oil in a wok.",
+          "Stir-fry garlic, then add veggies.",
+          "Add soy sauce and cook for 5 minutes."
+        ],
+        "cookingTime": "15 minutes"
+      },
+      {
+        "id": "avocado-toast",
+        "name": "Avocado Toast",
+        "category": "Breakfast",
+        "author": "Emma Green",
+        "imageUrl": "pancake.jpg",
+        "ingredients": [
+          { "name": "Bread", "quantity": "2 slices", "unit": "" },
+          { "name": "Avocado", "quantity": "1", "unit": "" },
+          { "name": "Lemon Juice", "quantity": "1 tsp", "unit": "" },
           { "name": "Salt", "quantity": "to taste", "unit": "" }
         ],
         "instructions": [
-          "Cook spaghetti according to package directions.",
-          "While pasta cooks, chop pancetta and cook in a skillet until crispy.",
-          "In a bowl, whisk together eggs and Parmesan cheese.",
-          "Drain pasta and add to skillet with pancetta.",
-          "Pour egg mixture over pasta and stir until sauce thickens.",
-          "Season with salt and black pepper to taste."
+          "Toast the bread.",
+          "Mash avocado with lemon juice and salt.",
+          "Spread on toast."
+        ],
+        "cookingTime": "5 minutes"
+      },
+      {
+        "id": "beef-tacos",
+        "name": "Beef Tacos",
+        "category": "Main Course",
+        "author": "Carlos Ruiz",
+        "imageUrl": "taco.jpg",
+        "ingredients": [
+          { "name": "Ground Beef", "quantity": "1 lb", "unit": "" },
+          { "name": "Taco Shells", "quantity": "8", "unit": "" },
+          { "name": "Lettuce", "quantity": "1 cup", "unit": "" },
+          { "name": "Cheese", "quantity": "1/2 cup", "unit": "" }
+        ],
+        "instructions": [
+          "Brown the beef in a pan.",
+          "Warm taco shells.",
+          "Assemble with beef, lettuce, and cheese."
         ],
         "cookingTime": "20 minutes"
       },
       {
-        "id": "chocolate-chip-chip",
-        "name": "Chocolate Chip Cookies",
-        "category": "Dessert",
-        "author": "Jane Doe",
-        "imageUrl": "food.png",
+        "id": "blueberry-smoothie",
+        "name": "Blueberry Smoothie",
+        "category": "Beverage",
+        "author": "Lisa Park",
+        "imageUrl": "berry.jpg",
         "ingredients": [
-          { "name": "All-Purpose Flour", "quantity": "2 1/4 cups", "unit": "" },
-          { "name": "Baking Soda", "quantity": "1 tsp", "unit": "" },
-          { "name": "Salt", "quantity": "1 tsp", "unit": "" },
-          { "name": "Unsalted Butter", "quantity": "1 cup", "unit": "" },
-          { "name": "Granulated Sugar", "quantity": "3/4 cup", "unit": "" },
-          { "name": "Packed Brown Sugar", "quantity": "3/4 cup", "unit": "" },
-          { "name": "Large Eggs", "quantity": "2", "unit": "" },
-          { "name": "Vanilla Extract", "quantity": "2 tsp", "unit": "" },
-          { "name": "Chocolate Chips", "quantity": "2 cups", "unit": "" }
+          { "name": "Blueberries", "quantity": "1 cup", "unit": "" },
+          { "name": "Yogurt", "quantity": "1/2 cup", "unit": "" },
+          { "name": "Milk", "quantity": "1/2 cup", "unit": "" }
         ],
         "instructions": [
-          "Preheat oven to 375 degrees F (190 degrees C).",
-          "In a medium bowl, whisk together flour, baking soda, and salt.",
-          "In a large bowl, cream together butter, granulated sugar, and brown sugar until light and fluffy.",
-          "Beat in eggs one at a time, then stir in the vanilla.",
-          "Gradually add the dry ingredients to the wet ingredients, mixing until just combined.",
-          "Stir in chocolate chips.",
-          "Drop by rounded tablespoons onto ungreased baking sheets.",
-          "Bake for 9-11 minutes, or until edges are golden brown.",
-          "Let cool on baking sheets for a few minutes before transferring to a wire rack to cool completely."
+          "Blend all ingredients until smooth."
         ],
-        "cookingTime": "12 minutes"
- 
+        "cookingTime": "5 minutes"
       },
       {
-        "id": "chocolate-chip-cake",
-        "name": "Chocolate Chip Cookies",
-        "category": "Dessert",
-        "author": "Jane Doe",
-        "imageUrl": "food.png",
+        "id": "chicken-curry",
+        "name": "Chicken Curry",
+        "category": "Main Course",
+        "author": "Raj Patel",
+        "imageUrl": "curry.jpg",
         "ingredients": [
-          { "name": "All-Purpose Flour", "quantity": "2 1/4 cups", "unit": "" },
-          { "name": "Baking Soda", "quantity": "1 tsp", "unit": "" },
-          { "name": "Salt", "quantity": "1 tsp", "unit": "" },
-          { "name": "Unsalted Butter", "quantity": "1 cup", "unit": "" },
-          { "name": "Granulated Sugar", "quantity": "3/4 cup", "unit": "" },
-          { "name": "Packed Brown Sugar", "quantity": "3/4 cup", "unit": "" },
-          { "name": "Large Eggs", "quantity": "2", "unit": "" },
-          { "name": "Vanilla Extract", "quantity": "2 tsp", "unit": "" },
-          { "name": "Chocolate Chips", "quantity": "2 cups", "unit": "" }
+          { "name": "Chicken", "quantity": "1 lb", "unit": "" },
+          { "name": "Coconut Milk", "quantity": "1 can", "unit": "" },
+          { "name": "Curry Powder", "quantity": "2 tbsp", "unit": "" }
         ],
         "instructions": [
-          "Preheat oven to 375 degrees F (190 degrees C).",
-          "In a medium bowl, whisk together flour, baking soda, and salt.",
-          "In a large bowl, cream together butter, granulated sugar, and brown sugar until light and fluffy.",
-          "Beat in eggs one at a time, then stir in the vanilla.",
-          "Gradually add the dry ingredients to the wet ingredients, mixing until just combined.",
-          "Stir in chocolate chips.",
-          "Drop by rounded tablespoons onto ungreased baking sheets.",
-          "Bake for 9-11 minutes, or until edges are golden brown.",
-          "Let cool on baking sheets for a few minutes before transferring to a wire rack to cool completely."
+          "Cook chicken in a pan.",
+          "Add coconut milk and curry powder.",
+          "Simmer for 20 minutes."
         ],
-        "cookingTime": "12 minutes"
- 
+        "cookingTime": "30 minutes"
       },
       {
-        "id": "chocolate-chip-frie",
-        "name": "Chocolate Chip Cookies",
-        "category": "Dessert",
-        "author": "Jane Doe",
-        "imageUrl": "food.png",
+        "id": "greek-salad",
+        "name": "Greek Salad",
+        "category": "Salad",
+        "author": "Maria Kostas",
+        "imageUrl": "greek.jpg",
         "ingredients": [
-          { "name": "All-Purpose Flour", "quantity": "2 1/4 cups", "unit": "" },
-          { "name": "Baking Soda", "quantity": "1 tsp", "unit": "" },
-          { "name": "Salt", "quantity": "1 tsp", "unit": "" },
-          { "name": "Unsalted Butter", "quantity": "1 cup", "unit": "" },
-          { "name": "Granulated Sugar", "quantity": "3/4 cup", "unit": "" },
-          { "name": "Packed Brown Sugar", "quantity": "3/4 cup", "unit": "" },
-          { "name": "Large Eggs", "quantity": "2", "unit": "" },
-          { "name": "Vanilla Extract", "quantity": "2 tsp", "unit": "" },
-          { "name": "Chocolate Chips", "quantity": "2 cups", "unit": "" }
+          { "name": "Cucumber", "quantity": "1", "unit": "" },
+          { "name": "Tomatoes", "quantity": "2", "unit": "" },
+          { "name": "Feta Cheese", "quantity": "1/2 cup", "unit": "" }
         ],
         "instructions": [
-          "Preheat oven to 375 degrees F (190 degrees C).",
-          "In a medium bowl, whisk together flour, baking soda, and salt.",
-          "In a large bowl, cream together butter, granulated sugar, and brown sugar until light and fluffy.",
-          "Beat in eggs one at a time, then stir in the vanilla.",
-          "Gradually add the dry ingredients to the wet ingredients, mixing until just combined.",
-          "Stir in chocolate chips.",
-          "Drop by rounded tablespoons onto ungreased baking sheets.",
-          "Bake for 9-11 minutes, or until edges are golden brown.",
-          "Let cool on baking sheets for a few minutes before transferring to a wire rack to cool completely."
+          "Chop cucumber and tomatoes.",
+          "Crumble feta on top.",
+          "Drizzle with olive oil."
         ],
-        "cookingTime": "12 minutes"
- 
+        "cookingTime": "10 minutes"
+      },
+      {
+        "id": "pancakes",
+        "name": "Pancakes",
+        "category": "Breakfast",
+        "author": "Tom Baker",
+        "imageUrl": "pancake.jpg",
+        "ingredients": [
+          { "name": "Flour", "quantity": "1 cup", "unit": "" },
+          { "name": "Milk", "quantity": "1 cup", "unit": "" },
+          { "name": "Egg", "quantity": "1", "unit": "" }
+        ],
+        "instructions": [
+          "Mix ingredients into a batter.",
+          "Cook on a griddle until golden."
+        ],
+        "cookingTime": "15 minutes"
+      },
+      {
+        "id": "tomato-soup",
+        "name": "Tomato Soup",
+        "category": "Soup",
+        "author": "Sophie Lane",
+        "imageUrl": "tomato.jpg",
+        "ingredients": [
+          { "name": "Tomatoes", "quantity": "6", "unit": "" },
+          { "name": "Onion", "quantity": "1", "unit": "" },
+          { "name": "Garlic", "quantity": "2 cloves", "unit": "" }
+        ],
+        "instructions": [
+          "Sauté onion and garlic.",
+          "Add chopped tomatoes and simmer.",
+          "Blend until smooth."
+        ],
+        "cookingTime": "25 minutes"
+      },
+      {
+        "id": "chocolate-mousse",
+        "name": "Chocolate Mousse",
+        "category": "Dessert",
+        "author": "Claire Desserts",
+        "imageUrl": "tomato.jpg",
+        "ingredients": [
+          { "name": "Dark Chocolate", "quantity": "200g", "unit": "" },
+          { "name": "Heavy Cream", "quantity": "1 cup", "unit": "" },
+          { "name": "Sugar", "quantity": "2 tbsp", "unit": "" }
+        ],
+        "instructions": [
+          "Melt chocolate.",
+          "Whip cream with sugar.",
+          "Fold chocolate into cream.",
+          "Chill for 2 hours."
+        ],
+        "cookingTime": "2 hours (chilling)"
+      },
+      {
+        "id": "grilled-salmon",
+        "name": "Grilled Salmon",
+        "category": "Main Course",
+        "author": "Fisher King",
+        "imageUrl": "salmon.jpg",
+        "ingredients": [
+          { "name": "Salmon Fillet", "quantity": "1 lb", "unit": "" },
+          { "name": "Lemon", "quantity": "1", "unit": "" },
+          { "name": "Dill", "quantity": "1 tbsp", "unit": "" }
+        ],
+        "instructions": [
+          "Season salmon with lemon and dill.",
+          "Grill for 5 minutes per side."
+        ],
+        "cookingTime": "10 minutes"
       }
     ]
   }
