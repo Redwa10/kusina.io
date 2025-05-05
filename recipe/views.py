@@ -1,8 +1,15 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Recipe
+from rest_framework.decorators import api_view
+from rest_framework.viewsets import ModelViewSet
+from rest_framework.response import Response
+from .models import Recipe, Ingredient
+from .serializers import RecipeSerializers
 # Create your views here.
 
-def recipe(request):
-    queryset = Recipe.objects.get(id = 1)
-    return render(request, "template.html", {"name": "abdulhafiz"})
+
+
+
+class RecipeViewSet(ModelViewSet):
+    queryset = Recipe.objects.all()
+    serializer_class = RecipeSerializers
