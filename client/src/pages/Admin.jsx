@@ -2,7 +2,11 @@ import { Link } from "react-router-dom";
 import { useRecipe } from "../contexts/RecipesContext";
 
 function Admin() {
-  const { recipes, updateRecipes } = useRecipe();
+  const { recipes, updateRecipes,isLoading } = useRecipe();
+  function handleDelete(id) {
+    const updatedRecipe = recipes.filter((recipe) => recipe.id !== id);
+    updateRecipes(updatedRecipe);
+  }
   return (
     <main>
       <header className="w-[80%] m-auto mt-5">
@@ -17,14 +21,14 @@ function Admin() {
           </div>
         </nav>
       </header>
-      {!recipes.length ? (
+      {isLoading ? (
         <div>loading</div>
       ) : (
         <section>
           {recipes.map((recipe) => {
             return (
               <div className="w-[80%] m-auto mt-15 flex justify-between font-poppins">
-                <div className="flex items-center justify-between gap-3">
+                <div className="flex  items-center justify-between gap-3">
                   <div className="w-[230px] h-[150px]">
                     <img
                       className="w-full h-full object-cover object-center"
@@ -44,8 +48,21 @@ function Admin() {
                   </div>
                 </div>
                 <div className="flex items-center justify-center gap-5">
-                  <div className="flex  flex-col items-center"><img className="ml-2" width={30} src="edit.svg" alt="edit" /><span className="text-[rgba(146, 139, 139, 1)]">edit</span></div>
-                  <div className="flex  flex-col items-center"><img width={30} src="delete.svg" alt="delete" /><span className="text-[rgba(146, 139, 139, 1)]">delete</span></div>
+                  <div className="flex  flex-col items-center cursor-pointer">
+                    <img
+                      className="ml-2"
+                      width={30}
+                      src="edit.svg"
+                      alt="edit"
+                    />
+                    <span className="text-[rgba(146, 139, 139, 1)]">edit</span>
+                  </div>
+                  <div onClick={()=>handleDelete(recipe.id)} className="flex  flex-col items-center cursor-pointer">
+                    <img width={30} src="delete.svg" alt="delete" />
+                    <span className="text-[rgba(146, 139, 139, 1)]">
+                      delete
+                    </span>
+                  </div>
                 </div>
               </div>
             );
