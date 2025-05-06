@@ -1,6 +1,5 @@
 import { useReducer } from "react";
 import { useRecipe } from "../contexts/RecipesContext";
-import { redirectDocument } from "react-router-dom";
 
 function EditRecipe({ currentRecipe, onSetEdit }) {
   const { recipes,updateRecipes } = useRecipe();
