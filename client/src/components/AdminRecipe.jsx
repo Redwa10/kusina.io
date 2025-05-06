@@ -10,7 +10,7 @@ function AdminRecipe({ recipe,setCurrentRecipe,onSetEdit }) {
     return (
       <div className="w-[80%] m-auto mt-15 flex justify-between font-poppins">
         <div className="flex  items-center justify-between gap-3">
-          <div className="w-[230px] h-[150px]">
+          <div className="w-[230px] h-[150px] rounded-lg overflow-hidden">
             <img
               className="w-full h-full object-cover object-center"
               width={250}

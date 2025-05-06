@@ -3,10 +3,12 @@ import { useRecipe } from "../contexts/RecipesContext";
 import { useState } from "react";
 import EditRecipe from "../components/EditRecipe";
 import AdminRecipe from "../components/AdminRecipe";
+import AddRecipe from "../components/AddRecipe";
 
 function Admin() {
   const { recipes, isLoading } = useRecipe();
   const [edit, setEdit] = useState(false);
+  const [add,setAdd] =useState(false)
   const [currentRecipe, setCurrentRecipe] = useState(null);
 
 
@@ -36,6 +38,13 @@ function Admin() {
       )}
 
       {edit && <EditRecipe onSetEdit={setEdit} currentRecipe={currentRecipe} />}
+      {add && <AddRecipe onsetAdd={setAdd} currentRecipe={currentRecipe} /> }
+    <div className="flex mt-2  mb-3 mr-2">
+       {!isLoading && <button onClick={()=>setAdd(!add)}  className=" ml-auto  drop-shadow-md text-center transition ease-in font-light text-lg  text-white bg-primary border-1 border-primary px-5 py-1 rounded-[100px] hover:bg-white cursor-pointer hover:text-primary w-fit ">
+          Add
+        </button>}
+     </div>
+     
     </main>
   );
 }
