@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { Link } from "react-router-dom";
 
-function Card({ recipe }) {
+const Card= memo( function Card({ recipe }) {
   //301*187
   return (
     <div className=" animate-pop drop-shadow-xl  max-w-fit">
@@ -38,5 +39,5 @@ function Card({ recipe }) {
     </div>
   );
 }
-
+) 
 export default Card;

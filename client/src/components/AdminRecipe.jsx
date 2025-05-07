@@ -1,6 +1,7 @@
+import { memo } from "react";
 import { useRecipe } from "../contexts/RecipesContext";
 
-function AdminRecipe({ recipe,setCurrentRecipe,onSetEdit }) {
+const AdminRecipe= memo( function AdminRecipe({ recipe,setCurrentRecipe,onSetEdit }) {
     const {recipes,updateRecipes} = useRecipe()
     function handleDelete(id) {
         const updatedRecipe = recipes.filter((recipe) => recipe.id !== id);
@@ -50,5 +51,5 @@ function AdminRecipe({ recipe,setCurrentRecipe,onSetEdit }) {
       </div>
     );
   }
-
+)
   export default AdminRecipe
