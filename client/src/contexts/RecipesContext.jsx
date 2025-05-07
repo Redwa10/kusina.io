@@ -20,6 +20,7 @@ function reducer(state, action) {
 function RecipesContext({ children }) {
   const [{ recipes, isLoading }, dispatch] = useReducer(reducer, {
     recipes: [],
+    favourite:[],
     isLoading: false,
   });
 
@@ -34,6 +35,9 @@ function RecipesContext({ children }) {
     getData();
   }, []);
 
+  // useEffect(fucntion () {
+    
+  // },[])
 function updateRecipes(data){
   dispatch({type:"recipes",payload:data})
 }

@@ -20,7 +20,7 @@ function AddRecipe({ onsetAdd }) {
       return;
     }
     const newRecipe = {
-      id: name,
+      id: name.split(" ").join("-").toLowerCase(),
       name,
       imageUrl,
       category,
@@ -28,7 +28,7 @@ function AddRecipe({ onsetAdd }) {
       instructions,
       cookingTime,
     };
-
+    console.log(newRecipe)
     addRecipe(newRecipe);
     onsetAdd(false)
   }
