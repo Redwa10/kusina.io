@@ -6,7 +6,7 @@ function Card({ recipe }) {
     <div className=" animate-pop drop-shadow-xl  max-w-fit">
       <div className="w-[280px] max-h-[187px] overflow-hidden bg-black rounded-t-[20px]  ">
         <img
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-center hover:scale-120 transition ease-in "
           width={280}
           height={150}
           src={`${recipe.imageUrl}`}
