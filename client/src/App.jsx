@@ -9,6 +9,7 @@ import { RecipesContext } from "./contexts/RecipesContext";
 import Recipes from "./pages/Recipes";
 import Recipe from "./pages/Recipe";
 import Admin from "./pages/Admin";
+import Favourite from "./pages/Favourite";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route path="/recipes" element={<Recipes />} />
             <Route path="/recipes/:id" element={<Recipe />} />
             <Route path="/admin" element={<Admin />} />
+            <Route path="/favourite" element={<Favourite />} />
           </Routes>
         </BrowserRouter>
       </RecipesContext>

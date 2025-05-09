@@ -1,7 +1,14 @@
-import { memo } from "react";
+import { memo, useState } from "react";
 import { Link } from "react-router-dom";
+import { useRecipe } from "../contexts/RecipesContext";
 
-const Card= memo( function Card({ recipe }) {
+const Card = memo(function Card({ recipe }) {
+  const { userFavouriteList,addFav } = useRecipe();
+  const [isOver, setIsOver] = useState(false);
+
+  function handleAddFav(){
+    addFav(recipe)
+  }
   //301*187
   return (
     <div className=" animate-pop drop-shadow-xl  max-w-fit">
@@ -24,12 +31,30 @@ const Card= memo( function Card({ recipe }) {
           </span>
         </p>
         <div className="flex justify-between w-[90%] m-auto items-center pb-4 px-1 py-2">
-          <img
-            className="cursor-pointer hover:fill-amber-50"
-            src="love.svg"
-            alt="heart"
-          />
-          <Link to={`${recipe.id}`}>
+          <div onClick={handleAddFav}
+            onMouseEnter={() => setIsOver(true)}
+            onMouseLeave={() => setIsOver(false)}
+          >
+            {isOver ? (
+              <img
+                className="cursor-pointer hover:fill-[#ccc]"
+                src="love-red.svg"
+                alt="heart"
+              />
+            ) : (
+              <img
+                className="cursor-pointer hover:fill-[#ccc]"
+                src={`${
+                  userFavouriteList.includes(recipe.id)
+                    ? `love-red.svg`
+                    : "love.svg"
+                }`}
+                alt="heart"
+              />
+            )}
+          </div>
+
+          <Link to={`/recipes/${recipe.id}`}>
             <button className="drop-shadow-md text-center mt-0.5 transition ease-in font-light text-md  text-white bg-primary border-1 border-primary px-3 py-1 rounded-[100px] hover:bg-white cursor-pointer hover:text-primary">
               Read more
             </button>
@@ -38,6 +63,5 @@ const Card= memo( function Card({ recipe }) {
       </div>
     </div>
   );
-}
-) 
+});
 export default Card;
