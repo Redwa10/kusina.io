@@ -3,11 +3,17 @@ import { Link } from "react-router-dom";
 import { useRecipe } from "../contexts/RecipesContext";
 
 const Card = memo(function Card({ recipe }) {
-  const { userFavouriteList,addFav } = useRecipe();
+  const { userFavouriteList,favourite,updateFav } = useRecipe();
   const [isOver, setIsOver] = useState(false);
 
-  function handleAddFav(){
-    addFav(recipe)
+  function handleUpdateFav(){
+   if(userFavouriteList.includes(recipe.id)){
+    const newFav= favourite.filter(fav=> fav.id !== recipe.id)
+    updateFav(newFav)
+   }else{
+    const newFav= [...favourite,recipe]
+    updateFav(newFav)
+   }
   }
   //301*187
   return (
@@ -31,7 +37,7 @@ const Card = memo(function Card({ recipe }) {
           </span>
         </p>
         <div className="flex justify-between w-[90%] m-auto items-center pb-4 px-1 py-2">
-          <div onClick={handleAddFav}
+          <div onClick={handleUpdateFav}
             onMouseEnter={() => setIsOver(true)}
             onMouseLeave={() => setIsOver(false)}
           >

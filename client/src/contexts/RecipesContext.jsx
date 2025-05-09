@@ -60,8 +60,8 @@ function RecipesContext({ children }) {
     userFavouriteList.includes(recipe.id)
   );
 
-  function addFav(data) {
-    dispatch({ type: "favourite/add", payload: data });
+  function updateFav(data) {
+    dispatch({ type: "favourite", payload: data });
   }
   return (
     <recipesProvider.Provider
@@ -71,7 +71,7 @@ function RecipesContext({ children }) {
         isLoading,
         userFavourite,
         userFavouriteList,
-        addFav,
+        updateFav,
         updateRecipes,
         addRecipe,
       }}
