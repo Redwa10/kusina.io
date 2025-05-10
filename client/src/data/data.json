@@ -3,7 +3,7 @@
       {
         "id": "vegetable-stir-fry",
         "name": "Vegetable Stir Fry",
-        "category": "Main Course",
+        "category": "Veg",
         "author": "Alex Smith",
         "imageUrl": "vegi.jpg",
         "ingredients": [
@@ -24,7 +24,7 @@
       {
         "id": "avocado-toast",
         "name": "Avocado Toast",
-        "category": "Breakfast",
+        "category": "Meat-based",
         "author": "Emma Green",
         "imageUrl": "pancake.jpg",
         "ingredients": [
@@ -43,7 +43,7 @@
       {
         "id": "beef-tacos",
         "name": "Beef Tacos",
-        "category": "Main Course",
+        "category": "Desert",
         "author": "Carlos Ruiz",
         "imageUrl": "taco.jpg",
         "ingredients": [
@@ -62,7 +62,7 @@
       {
         "id": "blueberry-smoothie",
         "name": "Blueberry Smoothie",
-        "category": "Beverage",
+        "category": "Diary",
         "author": "Lisa Park",
         "imageUrl": "berry.jpg",
         "ingredients": [
@@ -78,7 +78,7 @@
       {
         "id": "chicken-curry",
         "name": "Chicken Curry",
-        "category": "Main Course",
+        "category": "Meat-based",
         "author": "Raj Patel",
         "imageUrl": "curry.jpg",
         "ingredients": [
@@ -96,7 +96,7 @@
       {
         "id": "greek-salad",
         "name": "Greek Salad",
-        "category": "Salad",
+        "category": "Veg",
         "author": "Maria Kostas",
         "imageUrl": "greek.jpg",
         "ingredients": [
@@ -114,7 +114,7 @@
       {
         "id": "pancakes",
         "name": "Pancakes",
-        "category": "Breakfast",
+        "category": "Desert",
         "author": "Tom Baker",
         "imageUrl": "pancake.jpg",
         "ingredients": [
@@ -131,7 +131,7 @@
       {
         "id": "tomato-soup",
         "name": "Tomato Soup",
-        "category": "Soup",
+        "category": "Veg",
         "author": "Sophie Lane",
         "imageUrl": "tomato.jpg",
         "ingredients": [
@@ -168,7 +168,7 @@
       {
         "id": "grilled-salmon",
         "name": "Grilled Salmon",
-        "category": "Main Course",
+        "category": "Meat-based",
         "author": "Fisher King",
         "imageUrl": "salmon.jpg",
         "ingredients": [
