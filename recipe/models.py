@@ -13,10 +13,11 @@ class Catagories(models.Model):
 class Recipe(models.Model):
     id = models.CharField(primary_key= True, max_length= 20, editable= False)
     name = models.CharField(max_length= 255, unique= True)
-    cooking_time = models.CharField(max_length= 255)
+    cookingTime = models.CharField(max_length= 255)
     author = models.CharField(max_length= 255)
-    instruction = models.TextField(help_text= "separate instructions with new line")
-    catagories = models.ForeignKey(Catagories, on_delete=models.CASCADE, related_name='foods', null= True)
+    instructions = models.TextField(help_text= "separate instructions with new line")
+    category = models.ForeignKey(Catagories, on_delete=models.CASCADE, related_name='foods', null= True)
+    imageUrl = models.ImageField(upload_to= 'recipe/images', null = True)
 
 
     def save(self, *args, **kwargs):

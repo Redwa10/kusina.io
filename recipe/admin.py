@@ -8,7 +8,7 @@ class IngredientInline(admin.TabularInline):
 
 @admin.register(models.Recipe)
 class RecipeAdmin(admin.ModelAdmin):
-    list_display = ["name", "catagories", "author", "cooking_time", "instruction"]
+    list_display = ["name", "category", "author", "cookingTime", "instructions"]
     inlines = [IngredientInline]
 
 
