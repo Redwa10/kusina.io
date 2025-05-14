@@ -22,7 +22,7 @@ function Nav({ src = "logo-2.svg" }) {
               <NavLink to={"/favourite"}>Favourite</NavLink>
             </li>
           </ul>
-          <input
+          <input  className="outline-0 border-1 border-[#c3c3c3] text-[#222222] rounded-lg px-2 py-1"
             value={search}
             onChange={(e) => onSearch(e.target.value.toLowerCase())}
             placeholder="search a recipe"
