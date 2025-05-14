@@ -20,16 +20,23 @@ function reducer(state, action) {
     case "loading":
       return { ...state, isLoading: true };
       break;
+    case "search":
+      return { ...state, search: action.payload };
+      break;
     default:
       break;
   }
 }
 function RecipesContext({ children }) {
-  const [{ recipes, favourite, isLoading }, dispatch] = useReducer(reducer, {
-    recipes: [],
-    favourite: [],
-    isLoading: false,
-  });
+  const [{ recipes, favourite, isLoading, search }, dispatch] = useReducer(
+    reducer,
+    {
+      recipes: [],
+      favourite: [],
+      isLoading: false,
+      search: "",
+    }
+  );
   useEffect(function () {
     async function getData() {
       dispatch({ type: "loading" });
@@ -59,9 +66,14 @@ function RecipesContext({ children }) {
   const userFavourite = recipes.filter((recipe) =>
     userFavouriteList.includes(recipe.id)
   );
-
+  const searchResult = recipes.filter((recipe) =>
+    recipe.name.toLowerCase().includes(search)
+  );
   function updateFav(data) {
     dispatch({ type: "favourite", payload: data });
+  }
+  function onSearch(data) {
+    dispatch({ type: "search", payload: data });
   }
   return (
     <recipesProvider.Provider
@@ -71,6 +83,9 @@ function RecipesContext({ children }) {
         isLoading,
         userFavourite,
         userFavouriteList,
+        search,
+        searchResult,
+        onSearch,
         updateFav,
         updateRecipes,
         addRecipe,
