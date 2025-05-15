@@ -32,7 +32,7 @@ class RecipeSerializers(serializers.ModelSerializer):
     def create(self, validated_data):
         instructions = validated_data.pop("instructions", [])
         validated_data["instructions"] = ",".join(instructions)       
-        ingredient_data = validated_data.pop("ingredients")
+        ingredient_data = validated_data.pop("ingredients", None)
         recipe = Recipe.objects.create(**validated_data)
 
         for ingr in ingredient_data:
@@ -45,7 +45,7 @@ class RecipeSerializers(serializers.ModelSerializer):
         if instructions is not None:
             validated_data["instructions"] = ",".join(instructions)
 
-        ingredient_data = validated_data.pop("ingredients")
+        ingredient_data = validated_data.pop("ingredients", None)
         instance = super().update(instance, validated_data)
 
         if ingredient_data is not None:
@@ -64,7 +64,10 @@ class RecipeSerializers(serializers.ModelSerializer):
 
 
 class FavoriteSerializers(serializers.ModelSerializer):
-    pass
+    user = serializers.CharField(read_only = True)
+    class Meta:
+        model = Favorite
+        fields = ['id', 'user', 'recipe']
 
 class CatagoriesSerializers(serializers.ModelSerializer):
     pass

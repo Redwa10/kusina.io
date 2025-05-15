@@ -17,7 +17,7 @@ class Recipe(models.Model):
     author = models.CharField(max_length= 255)
     instructions = models.TextField(help_text= "separate instructions with new line")
     category = models.ForeignKey(Catagories, on_delete=models.CASCADE, related_name='foods', null= True)
-    imageUrl = models.ImageField(upload_to= 'recipe/images', null = True)
+    imageUrl = models.ImageField(upload_to= 'recipe/images', null = True,blank= True )
 
 
     def save(self, *args, **kwargs):
@@ -27,11 +27,14 @@ class Recipe(models.Model):
     
 
     def __str__(self):
-        return self.food_name
+        return self.name
 
 class Favorite(models.Model):
     recipe = models.ForeignKey(Recipe, on_delete= models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete= models.CASCADE)
+
+    class Meta:
+        unique_together = ("recipe", "user")
 
 
 class Ingredient(models.Model):
