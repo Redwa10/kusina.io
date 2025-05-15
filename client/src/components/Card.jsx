@@ -23,7 +23,7 @@ const Card = memo(function Card({ recipe }) {
           className="w-full h-full object-cover object-center hover:scale-120 transition ease-in "
           width={280}
           height={150}
-          src={`${recipe.imageUrl}`}
+          src={`${recipe.imageUrls}`}
           alt="food"
         />
       </div>
