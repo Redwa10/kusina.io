@@ -17,7 +17,7 @@ class Recipe(models.Model):
     author = models.CharField(max_length= 255)
     instructions = models.TextField(help_text= "separate instructions with new line")
     category = models.ForeignKey(Catagories, on_delete=models.CASCADE, related_name='foods', null= True)
-    imageUrl = models.ImageField(upload_to= 'recipe/images', null = True,blank= True )
+    imageUrl = models.URLField(max_length= 500, null = True, blank= True )
 
 
     def save(self, *args, **kwargs):

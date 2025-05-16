@@ -8,6 +8,8 @@ router = routers.DefaultRouter()
 router.register("recipes", views.RecipeViewSet)
 router.register("admin/recipes", views.AdminRecipeViewSet, basename= "admin-recipes")
 router.register("favorites", views.FavoriteViewSet, basename= "favorites")
+router.register("admin/categories", views.CategoriesViewSet, basename= "categories")
+
 urlpatterns = [
     path('', include(router.urls)),
 ]

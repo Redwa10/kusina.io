@@ -7,8 +7,8 @@ from rest_framework.response import Response
 
 from core.models import User
 import recipe
-from .models import Favorite, Recipe, Ingredient
-from .serializers import FavoriteSerializers, RecipeSerializers
+from .models import Catagories, Favorite, Recipe, Ingredient
+from .serializers import FavoriteSerializers, RecipeSerializers, CatagoriesSerializers
 # Create your views here.
 
 
@@ -32,3 +32,9 @@ class FavoriteViewSet(ModelViewSet):
     
     def perform_create(self, serializer):
         return serializer.save(user= self.request.user)
+    
+
+class CategoriesViewSet(ModelViewSet):
+    serializer_class = CatagoriesSerializers
+    queryset = Catagories.objects.all()
+    permission_classes = [IsAdminUser]

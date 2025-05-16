@@ -3,7 +3,7 @@ from dis import Instruction
 from xml.dom import ValidationErr
 from rest_framework import serializers
 from .models import Recipe, Ingredient, Favorite, Catagories
-
+import json
 
 
 
@@ -21,8 +21,10 @@ class RecipeSerializers(serializers.ModelSerializer):
         queryset = Catagories.objects.all(),
         slug_field = "title"
     )
-    imageUrl = serializers.ImageField(required = False)
+    imageUrl = serializers.URLField(required = False)
 
+
+    
     def to_representation(self, instance):
         representation = super().to_representation(instance)
         representation["instructions"] = instance.instructions.strip().split(",")
@@ -70,4 +72,6 @@ class FavoriteSerializers(serializers.ModelSerializer):
         fields = ['id', 'user', 'recipe']
 
 class CatagoriesSerializers(serializers.ModelSerializer):
-    pass
+    class Meta:
+        model = Catagories
+        fields = ["id", "title"]
