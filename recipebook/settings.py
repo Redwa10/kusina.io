@@ -95,7 +95,7 @@ DATABASES = {
         'NAME': 'recipebook',
         'HOST' : 'localhost',
         'USER': 'root',
-        'PASSWORD' : 'Zifahludb@10',
+        'PASSWORD' : 'root',
 
     }
 }
