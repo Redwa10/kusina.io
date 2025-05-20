@@ -29,7 +29,6 @@ function AddRecipe({ onsetAdd }) {
       instructions,
       cookingTime,
     };
-    console.log(newRecipe);
     addRecipe(newRecipe);
     onsetAdd(false);
   }
@@ -56,9 +55,12 @@ function AddRecipe({ onsetAdd }) {
       case "cookingTime":
         return { ...state, cookingTime: action.payload };
       case "ingredients/add":
-        return { ...state, ingredients: [...state.ingredients,action.payload] };
+        return {
+          ...state,
+          ingredients: [...state.ingredients, action.payload],
+        };
       case "ingredients/update":
-        return { ...state, ingredients:action.payload };
+        return { ...state, ingredients: action.payload };
 
       default:
         console.log("unknown action type");
@@ -82,23 +84,23 @@ function AddRecipe({ onsetAdd }) {
   const [currentQaunt, setCurrentQuant] = useState("");
 
   function handleAddIng(e) {
-    e.preventDefault()
-    if(currentIng==="" || currentQaunt===""){
-      alert("fields are empty")
-      return
+    e.preventDefault();
+    if (currentIng === "" || currentQaunt === "") {
+      alert("fields are empty");
+      return;
     }
-    const newIng={
-      id:Math.random()*1000,
-      currentIng,
-      currentQaunt
-    }
-    dispatch({type:"ingredients/add",payload:newIng})
+    const newIng = {
+      id: Math.random() * 1000,
+      name: currentIng,
+      quantity: currentQaunt,
+    };
+    dispatch({ type: "ingredients/add", payload: newIng });
     setCurrentIng("");
-    setCurrentQuant("")
+    setCurrentQuant("");
   }
-   function handleUpdateIng(newIngs){
-      dispatch({type:"ingredients/update",payload:newIngs})
-    }
+  function handleUpdateIng(newIngs) {
+    dispatch({ type: "ingredients/update", payload: newIngs });
+  }
   return (
     <div className="fixed z-2 text-white top-[15%] left-[40%]  ">
       <div
@@ -152,11 +154,17 @@ function AddRecipe({ onsetAdd }) {
           </lable>
 
           {/* ingredits container */}
-          <div className="w-[100%] p-1.5 mb-0.5 max-h-20 overflow-y-scroll flex  flex-wrap gap-2 bg-[#f7f7f7] border-1 rounded-md  border-[#ccc]">
-          {ingredients.length>0 && ingredients.map(ing=><IngredientTag onUpdateIng={handleUpdateIng} ingredients={ingredients} ing={ing}/>)}
-
-          </div>
-
+          {ingredients.length > 0 && (
+            <div className="w-[100%] p-1.5 mb-0.5 max-h-20 overflow-y-scroll flex  flex-wrap gap-2 bg-[#f7f7f7] border-1 rounded-md  border-[#ccc]">
+              {ingredients.map((ing) => (
+                <IngredientTag
+                  onUpdateIng={handleUpdateIng}
+                  ingredients={ingredients}
+                  ing={ing}
+                />
+              ))}
+            </div>
+          )}
 
           <div className="flex gap-1 items-center">
             <div className="flex flex-col gap-1">
@@ -179,7 +187,7 @@ function AddRecipe({ onsetAdd }) {
             </div>
 
             <button
-              onClick={(e)=>handleAddIng(e)}
+              onClick={(e) => handleAddIng(e)}
               className="mt-5 ml-auto  drop-shadow-md text-center transition ease-in font-light text-md  text-white bg-primary border-1 border-primary h-[40px] px-2 rounded-md hover:bg-white cursor-pointer hover:text-primary w-fit "
             >
               Add

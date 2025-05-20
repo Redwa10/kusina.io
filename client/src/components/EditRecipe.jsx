@@ -1,21 +1,23 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { useRecipe } from "../contexts/RecipesContext";
+import IngredientTag from "./IngredientTag";
 
 function EditRecipe({ currentRecipe, onSetEdit }) {
-  const { recipes,updateRecipes } = useRecipe();
+  const { recipes, updateRecipes } = useRecipe();
 
   function handleSetEdit() {
     onSetEdit((edit) => !edit);
   }
   function handleUpdateRecipe(e) {
-    e.preventDefault()
+    e.preventDefault();
     const updatedRecipes = recipes.map((recipe) => {
-  return recipe===currentRecipe ? {...recipe,name,imageUrl,category,instructions,cookingTime}:recipe
-      
+      return recipe === currentRecipe
+        ? { ...recipe, name, imageUrl, category, instructions, cookingTime }
+        : recipe;
     });
-   
-    updateRecipes(updatedRecipes)
-    onSetEdit(false)
+
+    updateRecipes(updatedRecipes);
+    onSetEdit(false);
   }
   function reducer(state, action) {
     switch (action.type) {
@@ -29,6 +31,13 @@ function EditRecipe({ currentRecipe, onSetEdit }) {
         return { ...state, instructions: action.payload.split(",") };
       case "cookingTime":
         return { ...state, cookingTime: action.payload };
+      case "ingredients/add":
+        return {
+          ...state,
+          ingredients: [...state.ingredients, action.payload],
+        };
+      case "ingredients/update":
+        return { ...state, ingredients: action.payload };
 
       default:
         console.log("unknown action type");
@@ -41,9 +50,35 @@ function EditRecipe({ currentRecipe, onSetEdit }) {
     category: currentRecipe.category,
     instructions: currentRecipe.instructions,
     cookingTime: currentRecipe.cookingTime,
+    ingredients: currentRecipe.ingredients,
   };
-  const [{ name, imageUrl, category, instructions, cookingTime }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { name, imageUrl, category, instructions, cookingTime, ingredients },
+    dispatch,
+  ] = useReducer(reducer, initialState);
+
+  console.log(ingredients);
+  const [currentIng, setCurrentIng] = useState("");
+  const [currentQaunt, setCurrentQuant] = useState("");
+
+  function handleAddIng(e) {
+    e.preventDefault();
+    if (currentIng === "" || currentQaunt === "") {
+      alert("fields are empty");
+      return;
+    }
+    const newIng = {
+      id: Math.random() * 1000,
+      name: currentIng,
+      quantity: currentQaunt,
+    };
+    dispatch({ type: "ingredients/add", payload: newIng });
+    setCurrentIng("");
+    setCurrentQuant("");
+  }
+  function handleUpdateIng(newIngs) {
+    dispatch({ type: "ingredients/update", payload: newIngs });
+  }
   return (
     <div className="fixed z-2 text-white top-[15%] left-[40%]  ">
       <div
@@ -90,6 +125,55 @@ function EditRecipe({ currentRecipe, onSetEdit }) {
             placeholder="step 1, step 2 ,step 3"
           ></input>
         </div>
+
+        {/* ingredients */}
+        <div className="flex flex-col ">
+          <lable className="font-medium capitalize text-lg mb-1">
+            Ingredients <span>{`(${ingredients.length})`}</span>
+          </lable>
+
+          {/* ingredits container */}
+          {ingredients.length > 0 && (
+            <div className="w-[100%] p-1.5 mb-0.5 max-h-20 overflow-y-scroll flex  flex-wrap gap-2 bg-[#f7f7f7] border-1 rounded-md  border-[#ccc]">
+              {ingredients.map((ing) => (
+                <IngredientTag
+                  onUpdateIng={handleUpdateIng}
+                  ingredients={ingredients}
+                  ing={ing}
+                />
+              ))}
+            </div>
+          )}
+
+          <div className="flex gap-1 items-center">
+            <div className="flex flex-col gap-1">
+              <lable className="font-light text-sm ">Ingredient</lable>
+              <input
+                value={currentIng}
+                onChange={(e) => setCurrentIng(e.target.value)}
+                className="outline-[#ccc] text-sm max-w-fit border-1 rounded-sm px-1 py-2 border-[#ccc]"
+                placeholder="Sugar"
+              ></input>
+            </div>
+            <div className="flex flex-col gap-1">
+              <lable className="font-light text-sm ">Quantity</lable>
+              <input
+                value={currentQaunt}
+                onChange={(e) => setCurrentQuant(e.target.value)}
+                className="outline-[#ccc] text-sm max-w-fit border-1 rounded-sm px-1 py-2 border-[#ccc]"
+                placeholder="2 Spoon"
+              ></input>
+            </div>
+
+            <button
+              onClick={(e) => handleAddIng(e)}
+              className="mt-5 ml-auto  drop-shadow-md text-center transition ease-in font-light text-md  text-white bg-primary border-1 border-primary h-[40px] px-2 rounded-md hover:bg-white cursor-pointer hover:text-primary w-fit "
+            >
+              Add
+            </button>
+          </div>
+        </div>
+        {/* ingredients end */}
         <div className="flex flex-col ">
           <lable className="font-medium capitalize text-lg">Cooking Time</lable>
           <input
@@ -117,7 +201,10 @@ function EditRecipe({ currentRecipe, onSetEdit }) {
             <option>Dairy</option>
           </select>
         </div>
-        <button onClick={e=>handleUpdateRecipe(e)} className=" ml-auto  drop-shadow-md text-center transition ease-in font-light text-lg  text-white bg-primary border-1 border-primary px-5 py-1 rounded-[100px] hover:bg-white cursor-pointer hover:text-primary w-fit ">
+        <button
+          onClick={(e) => handleUpdateRecipe(e)}
+          className=" ml-auto  drop-shadow-md text-center transition ease-in font-light text-lg  text-white bg-primary border-1 border-primary px-5 py-1 rounded-[100px] hover:bg-white cursor-pointer hover:text-primary w-fit "
+        >
           update
         </button>
       </form>
