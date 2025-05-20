@@ -32,6 +32,14 @@ function Signup() {
               placeholder="password"
               type="password"
             />
+            <div className="w-[100%] mt-3 mr-6">
+              <label className="font-semibold" htmlFor="role">role:</label>
+            <select className="w-[110%] bg-[#F1F1F1] p-[12px]  text-[17px] rounded-[15px] outline-0 border-1 border-[#b4b4b4ee] ">
+              <option value="user">User</option>
+              <option value="admin">Admin</option>
+            </select>
+            </div>
+            
             <button
               className="w-[80%] border-1  text-center transition ease-in font-light text-xl  text-white bg-primary mt-8 px-7 py-3 rounded-[10px] hover:bg-white cursor-pointer hover:text-primary hover:border-primary drop-shadow-md">
               Sign up
