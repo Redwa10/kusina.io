@@ -1,8 +1,9 @@
-import { useReducer } from "react";
+import { useReducer, useState } from "react";
 import { useRecipe } from "../contexts/RecipesContext";
+import IngredientTag from "./IngredientTag";
 
 function AddRecipe({ onsetAdd }) {
-  const {  addRecipe } = useRecipe();
+  const { addRecipe } = useRecipe();
 
   function handleSetAdd() {
     onsetAdd((add) => !add);
@@ -28,9 +29,9 @@ function AddRecipe({ onsetAdd }) {
       instructions,
       cookingTime,
     };
-    console.log(newRecipe)
+    console.log(newRecipe);
     addRecipe(newRecipe);
-    onsetAdd(false)
+    onsetAdd(false);
   }
   //   function handleUpdateRecipe(e) {
   //     e.preventDefault()
@@ -54,6 +55,8 @@ function AddRecipe({ onsetAdd }) {
         return { ...state, instructions: action.payload.split(",") };
       case "cookingTime":
         return { ...state, cookingTime: action.payload };
+      case "ingredients/add":
+        return { ...state, ingredients: [...state.ingredients,action.payload] };
 
       default:
         console.log("unknown action type");
@@ -66,9 +69,28 @@ function AddRecipe({ onsetAdd }) {
     category: "",
     instructions: [""],
     cookingTime: "",
+    ingredients: [],
   };
-  const [{ name, imageUrl, category, instructions, cookingTime }, dispatch] =
-    useReducer(reducer, initialState);
+  const [
+    { name, imageUrl, category, instructions, cookingTime, ingredients },
+    dispatch,
+  ] = useReducer(reducer, initialState);
+
+  const [currentIng, setCurrentIng] = useState("");
+  const [currentQaunt, setCurrentQuant] = useState("");
+
+  function handleAddIng(e) {
+    e.preventDefault()
+    if(currentIng===""&& currentQaunt===""){
+      alert("fields are empty")
+      return
+    }
+    const newIng={
+      currentIng,
+      currentQaunt
+    }
+    dispatch({type:"ingredients/add",payload:newIng})
+  }
   return (
     <div className="fixed z-2 text-white top-[15%] left-[40%]  ">
       <div
@@ -115,6 +137,48 @@ function AddRecipe({ onsetAdd }) {
             placeholder="step 1, step 2 ,step 3"
           ></input>
         </div>
+        {/* ingredients */}
+        <div className="flex flex-col ">
+          <lable className="font-medium capitalize text-lg mb-1">
+            Ingredients <span>{`(${ingredients.length})`}</span>
+          </lable>
+
+          {/* ingredits container */}
+          <div className="w-[100%] p-1.5 mb-0.5 max-h-20 overflow-y-scroll flex  flex-wrap gap-2 bg-[#f7f7f7] border-1 rounded-md  border-[#ccc]">
+          {ingredients.length>0 && ingredients.map(ing=><IngredientTag ing={ing}/>)}
+
+          </div>
+
+
+          <div className="flex gap-1 items-center">
+            <div className="flex flex-col gap-1">
+              <lable className="font-light text-sm ">Ingredient</lable>
+              <input
+                value={currentIng}
+                onChange={(e) => setCurrentIng(e.target.value)}
+                className="outline-[#ccc] text-sm max-w-fit border-1 rounded-sm px-1 py-2 border-[#ccc]"
+                placeholder="Sugar"
+              ></input>
+            </div>
+            <div className="flex flex-col gap-1">
+              <lable className="font-light text-sm ">Quantity</lable>
+              <input
+                value={currentQaunt}
+                onChange={(e) => setCurrentQuant(e.target.value)}
+                className="outline-[#ccc] text-sm max-w-fit border-1 rounded-sm px-1 py-2 border-[#ccc]"
+                placeholder="2 Spoon"
+              ></input>
+            </div>
+
+            <button
+              onClick={(e)=>handleAddIng(e)}
+              className="mt-5 ml-auto  drop-shadow-md text-center transition ease-in font-light text-md  text-white bg-primary border-1 border-primary h-[40px] px-2 rounded-md hover:bg-white cursor-pointer hover:text-primary w-fit "
+            >
+              Add
+            </button>
+          </div>
+        </div>
+        {/* ingredients end */}
         <div className="flex flex-col ">
           <lable className="font-medium capitalize text-lg">Cooking Time</lable>
           <input
