@@ -10,6 +10,7 @@ import Recipes from "./pages/Recipes";
 import Recipe from "./pages/Recipe";
 import Admin from "./pages/Admin";
 import Favourite from "./pages/Favourite";
+import AdminLogin from "./pages/AdminLogin";
 
 function App() {
   return (
@@ -26,6 +27,9 @@ function App() {
             <Route path="/recipes/:id" element={<Recipe />} />
             <Route path="/admin" element={<Admin />} />
             <Route path="/favourite" element={<Favourite />} />
+            <Route path="/admin">
+              <Route path="login" element={<AdminLogin/>}></Route>
+            </Route>
           </Routes>
         </BrowserRouter>
       </RecipesContext>
