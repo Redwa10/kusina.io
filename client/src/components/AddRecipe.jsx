@@ -57,6 +57,8 @@ function AddRecipe({ onsetAdd }) {
         return { ...state, cookingTime: action.payload };
       case "ingredients/add":
         return { ...state, ingredients: [...state.ingredients,action.payload] };
+      case "ingredients/update":
+        return { ...state, ingredients:action.payload };
 
       default:
         console.log("unknown action type");
@@ -86,11 +88,15 @@ function AddRecipe({ onsetAdd }) {
       return
     }
     const newIng={
+      id:Math.random()*1000,
       currentIng,
       currentQaunt
     }
     dispatch({type:"ingredients/add",payload:newIng})
   }
+   function handleUpdateIng(newIngs){
+      dispatch({type:"ingredients/update",payload:newIngs})
+    }
   return (
     <div className="fixed z-2 text-white top-[15%] left-[40%]  ">
       <div
@@ -145,7 +151,7 @@ function AddRecipe({ onsetAdd }) {
 
           {/* ingredits container */}
           <div className="w-[100%] p-1.5 mb-0.5 max-h-20 overflow-y-scroll flex  flex-wrap gap-2 bg-[#f7f7f7] border-1 rounded-md  border-[#ccc]">
-          {ingredients.length>0 && ingredients.map(ing=><IngredientTag ing={ing}/>)}
+          {ingredients.length>0 && ingredients.map(ing=><IngredientTag onUpdateIng={handleUpdateIng} ingredients={ingredients} ing={ing}/>)}
 
           </div>
 
