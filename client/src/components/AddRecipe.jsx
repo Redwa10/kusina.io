@@ -83,7 +83,7 @@ function AddRecipe({ onsetAdd }) {
 
   function handleAddIng(e) {
     e.preventDefault()
-    if(currentIng===""&& currentQaunt===""){
+    if(currentIng==="" || currentQaunt===""){
       alert("fields are empty")
       return
     }
@@ -93,6 +93,8 @@ function AddRecipe({ onsetAdd }) {
       currentQaunt
     }
     dispatch({type:"ingredients/add",payload:newIng})
+    setCurrentIng("");
+    setCurrentQuant("")
   }
    function handleUpdateIng(newIngs){
       dispatch({type:"ingredients/update",payload:newIngs})
