@@ -5,20 +5,24 @@ const authProvider = createContext();
 
 function AuthContext({ children }) {
   const [user, setUser] = useState(null);
+  const [authLoading, setAuthLoading] = useState(true);
   useEffect(function () {
     async function getUser() {
-      const token =  localStorage.getItem("user") ;
+      const token = localStorage.getItem("user");
       if (token) {
         const user = jwtDecode(token);
-        console.log( user)
+        console.log(user);
         setUser(user);
       }
+      setAuthLoading(false);
     }
     getUser();
   }, []);
 
   return (
-    <authProvider.Provider value={{ user }}>{children}</authProvider.Provider>
+    <authProvider.Provider value={{ user, authLoading }}>
+      {children}
+    </authProvider.Provider>
   );
 }
 function useAuth() {
@@ -26,4 +30,4 @@ function useAuth() {
   return context;
 }
 
-export  { AuthContext, useAuth };
+export { AuthContext, useAuth };
