@@ -7,9 +7,10 @@ function AuthContext({ children }) {
   const [user, setUser] = useState(null);
   useEffect(function () {
     async function getUser() {
-      const token = localStorage.getItem("user");
+      const token =  localStorage.getItem("user") ;
       if (token) {
-        const user = jwtDecode(token);
+        const user =  jwtDecode(token);
+        
         setUser(user);
       }
     }
