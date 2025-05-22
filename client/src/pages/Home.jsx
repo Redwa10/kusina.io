@@ -9,7 +9,7 @@ function Home() {
   const { user } = useAuth();
   return (
     <main>
-      <Nav />
+      <Nav searchBar={false} />
 
       <header className="font-lex font-extrabold w-[80%] m-auto mt-25 text-[28px]">
         <div className="absolute bg-primary w-[136px] top-[205px] h-[5.5px]"></div>
