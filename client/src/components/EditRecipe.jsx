@@ -80,7 +80,7 @@ function EditRecipe({ currentRecipe, onSetEdit }) {
     dispatch({ type: "ingredients/update", payload: newIngs });
   }
   return (
-    <div className="fixed z-2 text-white top-[15%] left-[40%]  ">
+    <div className="fixed z-2 text-white top-[5%] left-[40%]  ">
       <div
         onClick={handleSetEdit}
         className="fixed top-0 left-0 min-w-screen min-h-screen bg-[#0000005b] z-[-1]"
