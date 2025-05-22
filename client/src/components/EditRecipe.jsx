@@ -12,7 +12,7 @@ function EditRecipe({ currentRecipe, onSetEdit }) {
     e.preventDefault();
     const updatedRecipes = recipes.map((recipe) => {
       return recipe === currentRecipe
-        ? { ...recipe, name, imageUrl, category, instructions, cookingTime }
+        ? { ...recipe, name, imageUrl, category, instructions, cookingTime,ingredients }
         : recipe;
     });
 

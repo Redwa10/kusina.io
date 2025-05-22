@@ -25,7 +25,7 @@ function AddRecipe({ onsetAdd }) {
       name,
       imageUrl,
       category,
-      ingredients: [{ name: "sdsa", quantity: "2 cup" }],
+      ingredients,
       instructions,
       cookingTime,
     };
