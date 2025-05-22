@@ -1,7 +1,7 @@
 import { jwtDecode } from "jwt-decode";
 import { createContext, useContext, useEffect, useState } from "react";
 
-const AuthProvider = createContext();
+const authProvider = createContext();
 
 function AuthContext({ children }) {
   const [user, setUser] = useState(null);
@@ -16,16 +16,13 @@ function AuthContext({ children }) {
     getUser();
   }, []);
 
-  const value = {
-    user,
-  };
   return (
-    <AuthProvider.Provider value={value}>{children}</AuthProvider.Provider>
+    <authProvider.Provider value={{ user }}>{children}</authProvider.Provider>
   );
 }
 function useAuth() {
-  const context = useContext(AuthProvider);
+  const context = useContext(authProvider);
   return context;
 }
 
-export default { AuthContext, useAuth };
+export  { AuthContext, useAuth };
