@@ -9,8 +9,8 @@ function AuthContext({ children }) {
     async function getUser() {
       const token =  localStorage.getItem("user") ;
       if (token) {
-        const user =  jwtDecode(token);
-        
+        const user = jwtDecode(token);
+        console.log( user)
         setUser(user);
       }
     }

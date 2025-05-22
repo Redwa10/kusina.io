@@ -13,7 +13,7 @@ function Home() {
 
       <header className="font-lex font-extrabold w-[80%] m-auto mt-25 text-[28px]">
         <div className="absolute bg-primary w-[136px] top-[205px] h-[5.5px]"></div>
-        Welcome to Kushina,<span className="text-primary"> {user.name}</span>
+        Welcome to Kushina,<span className="text-primary"> {user?.name}</span>
       </header>
       <section className="w-[80%] m-auto mt-[50px] font-poppins mb-100px ">
         <div className="flex justify-between items-center font-medium">
