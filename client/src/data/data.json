@@ -7,11 +7,11 @@
         "author": "Alex Smith",
         "imageUrl": "vegi.jpg",
         "ingredients": [
-          { "name": "Broccoli", "quantity": "2 cups", "unit": "" },
-          { "name": "Bell Peppers", "quantity": "1", "unit": "" },
-          { "name": "Carrots", "quantity": "2", "unit": "" },
-          { "name": "Soy Sauce", "quantity": "3 tbsp", "unit": "" },
-          { "name": "Garlic", "quantity": "2 cloves", "unit": "" }
+          { "name": "Broccoli", "quantity": "2 cups", "id": "22323" },
+          { "name": "Bell Peppers", "quantity": "1", "id": "243242" },
+          { "name": "Carrots", "quantity": "2", "id": "2242122" },
+          { "name": "Soy Sauce", "quantity": "3 tbsp", "id": "2232132" },
+          { "name": "Garlic", "quantity": "2 cloves", "id": "222131232" }
         ],
         "instructions": [
           "Chop vegetables.",
@@ -28,10 +28,10 @@
         "author": "Emma Green",
         "imageUrl": "pancake.jpg",
         "ingredients": [
-          { "name": "Bread", "quantity": "2 slices", "unit": "" },
-          { "name": "Avocado", "quantity": "1", "unit": "" },
-          { "name": "Lemon Juice", "quantity": "1 tsp", "unit": "" },
-          { "name": "Salt", "quantity": "to taste", "unit": "" }
+          { "name": "Bread", "quantity": "2 slices", "id": "2312312" },
+          { "name": "Avocado", "quantity": "1", "id": "2132131" },
+          { "name": "Lemon Juice", "quantity": "1 tsp", "id": "665765756" },
+          { "name": "Salt", "quantity": "to taste", "id": "79879878" }
         ],
         "instructions": [
           "Toast the bread.",

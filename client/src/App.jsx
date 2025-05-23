@@ -10,25 +10,78 @@ import Recipes from "./pages/Recipes";
 import Recipe from "./pages/Recipe";
 import Admin from "./pages/Admin";
 import Favourite from "./pages/Favourite";
+import AdminLogin from "./pages/AdminLogin";
+import { AuthContext } from "./contexts/AuthContext";
+import ProtectedRoute from "./pages/ProtectedRoute";
+import RoleBasedRoute from "./pages/RoleBasedRoute";
 
 function App() {
   return (
     <div>
-      <RecipesContext>
-        <BrowserRouter>
-          <Routes>
-            <Route index element={<Homepage />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/signup" element={<Signup />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/home/:id" element={<Recipe />} />
-            <Route path="/recipes" element={<Recipes />} />
-            <Route path="/recipes/:id" element={<Recipe />} />
-            <Route path="/admin" element={<Admin />} />
-            <Route path="/favourite" element={<Favourite />} />
-          </Routes>
-        </BrowserRouter>
-      </RecipesContext>
+      <AuthContext>
+        <RecipesContext>
+          <BrowserRouter>
+            <Routes>
+              <Route index element={<Homepage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
+              <Route
+                path="/home"
+                element={
+                  <ProtectedRoute>
+                    <Home />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/home/:id"
+                element={
+                  <ProtectedRoute>
+                    <Recipe />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/recipes"
+                element={
+                  <ProtectedRoute>
+                    <Recipes />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/recipes/:id"
+                element={
+                  <ProtectedRoute>
+                    <Recipe />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/favourite"
+                element={
+                  <ProtectedRoute>
+                    <Favourite />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute>
+                    <RoleBasedRoute>
+                      {" "}
+                      <Admin />
+                    </RoleBasedRoute>
+                  </ProtectedRoute>
+                }
+              >
+                <Route path="login" element={<AdminLogin />}></Route>
+              </Route>
+            </Routes>
+          </BrowserRouter>
+        </RecipesContext>
+      </AuthContext>
     </div>
   );
 }
