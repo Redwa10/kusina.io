@@ -33,11 +33,49 @@ function App() {
                   </ProtectedRoute>
                 }
               />
-              <Route path="/home/:id" element={<ProtectedRoute><Recipe /></ProtectedRoute>} />
-              <Route path="/recipes" element={<ProtectedRoute><Recipes /></ProtectedRoute>} />
-              <Route path="/recipes/:id" element={<ProtectedRoute><Recipe /></ProtectedRoute>} />
-              <Route path="/favourite" element={<ProtectedRoute><Favourite /></ProtectedRoute>} />
-              <Route path="/admin" element={<RoleBasedRoute> <Admin/></RoleBasedRoute>}>
+              <Route
+                path="/home/:id"
+                element={
+                  <ProtectedRoute>
+                    <Recipe />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/recipes"
+                element={
+                  <ProtectedRoute>
+                    <Recipes />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/recipes/:id"
+                element={
+                  <ProtectedRoute>
+                    <Recipe />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/favourite"
+                element={
+                  <ProtectedRoute>
+                    <Favourite />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/admin"
+                element={
+                  <ProtectedRoute>
+                    <RoleBasedRoute>
+                      {" "}
+                      <Admin />
+                    </RoleBasedRoute>
+                  </ProtectedRoute>
+                }
+              >
                 <Route path="login" element={<AdminLogin />}></Route>
               </Route>
             </Routes>
