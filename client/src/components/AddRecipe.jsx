@@ -108,12 +108,12 @@ function AddRecipe({ onsetAdd }) {
         className="fixed top-0 left-0 min-w-screen min-h-screen bg-[#0000005b] z-[-1]"
       ></div>
       <form className=" bg-[#fff] text-black flex flex-col gap-3 px-5 py-7 w-[450px] rounded-md ">
-        <p
+        <img
+        width={20}
+          src="close.svg"
           onClick={handleSetAdd}
-          className="select-none cursor-pointer absolute top-2 left-[93%] font-bold text-xl text-red-500  "
-        >
-          X
-        </p>
+          className=" select-none cursor-pointer  absolute left-[92%] top-[1.8%]  "
+        ></img>
         <div className="flex flex-col ">
           <lable className="font-medium capitalize text-lg">name</lable>
           <input

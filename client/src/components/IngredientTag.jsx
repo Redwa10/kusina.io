@@ -13,12 +13,14 @@ function IngredientTag({ ing, onUpdateIng, ingredients }) {
           ing.name?.charAt(0).toUpperCase() + ing.name?.slice(1).toLowerCase()
         } | ${ing.quantity}`}
       </span>
-      <span
+      <img
+      width={14.5}
+      src="close.svg"
         onClick={() => handleUpdate(ing.id)}
-        className="text-[#fe5353]  text-sm cursor-pointer hover:text-[red]"
+        className=" cursor-pointer "
       >
-        X
-      </span>
+       
+      </img>
     </div>
   );
 }
