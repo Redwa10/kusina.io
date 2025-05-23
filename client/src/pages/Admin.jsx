@@ -35,7 +35,7 @@ function Admin() {
         <div>loading</div>
       ) : (
         <section>
-          {search === "" ? (
+          {search === "" ? recipes.length===0?<div className="min-w-screen font-bold text-4xl text-center mt-15 text-[#ededed]">There are no Recipes yet!!</div> :(
             recipes.map((recipe) => {
               return (
                 <AdminRecipe
@@ -52,7 +52,14 @@ function Admin() {
             </div>
           ) : (
             searchResult.map((recipe) => {
-              return <AdminRecipe key={recipe.id} recipe={recipe} />;
+              return (
+                <AdminRecipe
+                  setCurrentRecipe={setCurrentRecipe}
+                  onSetEdit={setEdit}
+                  key={recipe.id}
+                  recipe={recipe}
+                />
+              );
             })
           )}
         </section>
@@ -61,7 +68,7 @@ function Admin() {
       {edit && <EditRecipe onSetEdit={setEdit} currentRecipe={currentRecipe} />}
       {add && <AddRecipe onsetAdd={setAdd} currentRecipe={currentRecipe} />}
       <div className="flex mt-2  mb-3 mr-2">
-        {!isLoading && search === "" && (
+        {!isLoading && search === "" && recipes.length > 0 && (
           <button
             onClick={() => setAdd(!add)}
             className=" ml-auto  drop-shadow-md text-center transition ease-in font-light text-lg  text-white bg-primary border-1 border-primary px-5 py-1 rounded-[100px] hover:bg-white cursor-pointer hover:text-primary w-fit "

@@ -25,12 +25,12 @@ function Home() {
             </div>
           </Link>
         </div>
-        <div className="grid grid-cols-4 justify-start justify-self-start gap-x-10 gap-y-14 mt-5">
+        <div className="grid grid-cols-4 justify-start justify-self-start gap-x-10 gap-y-14 mt-5 mb-15">
           {isLoading ? (
             <p>loading......</p>
           ) : (
-            recipes.map((recipe) => {
-              return <Card key={recipe.id} recipe={recipe} />;
+            recipes.map((recipe, index) => {
+              return index < 7 && <Card key={recipe.id} recipe={recipe} />;
             })
           )}
         </div>

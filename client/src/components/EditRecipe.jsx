@@ -88,7 +88,7 @@ function EditRecipe({ currentRecipe, onSetEdit }) {
       <form className=" bg-[#fff] text-black flex flex-col gap-3 px-5 py-7 w-[450px] rounded-md ">
         <p
           onClick={handleSetEdit}
-          className="select-none cursor-pointer absolute top-2 left-[93%] font-bold text-xl text-red-500  "
+          className="font-poppins select-none cursor-pointer absolute top-2 left-[93%] font-bold text-xl text-red-500  "
         >
           X
         </p>
