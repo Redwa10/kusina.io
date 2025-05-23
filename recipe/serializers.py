@@ -1,5 +1,6 @@
 from dataclasses import field
 from dis import Instruction
+from unittest.util import _MAX_LENGTH
 from xml.dom import ValidationErr
 from rest_framework import serializers
 from .models import Recipe, Ingredient, Favorite, Catagories
@@ -21,7 +22,7 @@ class RecipeSerializers(serializers.ModelSerializer):
         queryset = Catagories.objects.all(),
         slug_field = "title"
     )
-    imageUrl = serializers.URLField(required = False)
+    imageUrl = serializers.CharField()
 
 
     
