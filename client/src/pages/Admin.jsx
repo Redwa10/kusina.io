@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useRecipe } from "../contexts/RecipesContext";
 import { useState } from "react";
 import EditRecipe from "../components/EditRecipe";
 import AdminRecipe from "../components/AdminRecipe";
 import AddRecipe from "../components/AddRecipe";
+import { useAuth } from "../contexts/AuthContext";
 
 function Admin() {
   const { recipes, isLoading, search, searchResult, onSearch } = useRecipe();
@@ -11,6 +12,14 @@ function Admin() {
   const [add, setAdd] = useState(false);
   const [currentRecipe, setCurrentRecipe] = useState(null);
 
+  const { logout } = useAuth();
+  const navigate = useNavigate();
+
+  // Log out
+  function handleLogout() {
+    logout();
+    navigate("/login");
+  }
   return (
     <main>
       <header className="w-[80%] m-auto mt-5">
@@ -21,15 +30,18 @@ function Admin() {
           <div className="flex  gap-6 items-center">
             <div className="flex items-center gap-1.5 border-1 border-[#c3c3c3] text-[#222222] rounded-lg px-2 py-1">
               <img className="mt-1" width={18} src="search.svg" alt="search" />
-               <input
-              className="outline-0 "
-              value={search}
-              onChange={(e) => onSearch(e.target.value.toLowerCase())}
-              placeholder="search a recipe"
-            ></input>
-</div>
-           
-            <button className="drop-shadow-md text-center transition ease-in font-light text-lg  text-white bg-primary border-1 border-primary px-5 py-1 rounded-[100px] hover:bg-white cursor-pointer hover:text-primary">
+              <input
+                className="outline-0 "
+                value={search}
+                onChange={(e) => onSearch(e.target.value.toLowerCase())}
+                placeholder="search a recipe"
+              ></input>
+            </div>
+
+            <button
+              onClick={handleLogout}
+              className="drop-shadow-md text-center transition ease-in font-light text-lg  text-white bg-primary border-1 border-primary px-5 py-1 rounded-[100px] hover:bg-white cursor-pointer hover:text-primary"
+            >
               Log out
             </button>
           </div>
@@ -39,17 +51,23 @@ function Admin() {
         <div>loading</div>
       ) : (
         <section>
-          {search === "" ? recipes.length===0?<div className="min-w-screen font-bold text-4xl text-center mt-15 text-[#ededed]">There are no Recipes yet!!</div> :(
-            recipes.map((recipe) => {
-              return (
-                <AdminRecipe
-                  setCurrentRecipe={setCurrentRecipe}
-                  onSetEdit={setEdit}
-                  key={recipe.id}
-                  recipe={recipe}
-                />
-              );
-            })
+          {search === "" ? (
+            recipes.length === 0 ? (
+              <div className="min-w-screen font-bold text-4xl text-center mt-15 text-[#ededed]">
+                There are no Recipes yet!!
+              </div>
+            ) : (
+              recipes.map((recipe) => {
+                return (
+                  <AdminRecipe
+                    setCurrentRecipe={setCurrentRecipe}
+                    onSetEdit={setEdit}
+                    key={recipe.id}
+                    recipe={recipe}
+                  />
+                );
+              })
+            )
           ) : !searchResult.length ? (
             <div className="text-center text-2xl text-[#444] mt-22">
               Can't find a recipe with this name
