@@ -34,12 +34,15 @@ function Nav({ src = "logo-2.svg", searchBar = true }) {
             </li>
           </ul>
           {searchBar && (
-            <input
-              className="outline-0 border-1 border-[#c3c3c3] text-[#222222] rounded-lg px-2 py-1"
-              value={search}
-              onChange={(e) => onSearch(e.target.value.toLowerCase())}
-              placeholder="search a recipe"
-            ></input>
+            <div className="flex items-center gap-1.5 border-1 border-[#c3c3c3] text-[#222222] rounded-lg px-2 py-1">
+              <img className="mt-1" width={18} src="search.svg" alt="search" />
+              <input
+                className="outline-0 "
+                value={search}
+                onChange={(e) => onSearch(e.target.value.toLowerCase())}
+                placeholder="search a recipe"
+              ></input>
+            </div>
           )}
           <button
             onClick={handleLogout}
