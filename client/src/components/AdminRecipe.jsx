@@ -5,6 +5,7 @@ const AdminRecipe= memo( function AdminRecipe({ recipe,setCurrentRecipe,onSetEdi
     const {recipes,updateRecipes} = useRecipe()
     function handleDelete(id) {
         const updatedRecipe = recipes.filter((recipe) => recipe.id !== id);
+        
         updateRecipes(updatedRecipe);
       }
     
