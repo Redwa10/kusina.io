@@ -20,7 +20,6 @@ function Recipes() {
     [recipes, selected]
   );
 
-  console.log(searchResult);
   return (
     <main>
       <header>

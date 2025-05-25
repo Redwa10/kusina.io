@@ -1,15 +1,19 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { useRecipe } from "../contexts/RecipesContext";
 import { useAuth } from "../contexts/AuthContext";
+import { useEffect } from "react";
 
 function Nav({ src = "logo-2.svg", searchBar = true }) {
   const { search, onSearch } = useRecipe();
   const { logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
+  useEffect(() => {
+    onSearch("");
+  }, [location]);
   // logout
-
   function handleLogout() {
     logout();
     navigate("/login");
