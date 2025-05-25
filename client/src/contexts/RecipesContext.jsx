@@ -47,7 +47,6 @@ function RecipesContext({ children }) {
         },
       });
       const data = await res.json();
-      console.log(data);
       dispatch({ type: "recipes", payload: data });
     }
     getData();
