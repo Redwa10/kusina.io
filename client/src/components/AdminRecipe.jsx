@@ -15,7 +15,7 @@ const AdminRecipe= memo( function AdminRecipe({ recipe,setCurrentRecipe,onSetEdi
             <img
               className="w-full h-full object-cover object-center"
               width={250}
-              src={`${recipe.imageUrl}`}
+              src={`${recipe.imageUrls}`}
               alt="food"
             />
           </div>
