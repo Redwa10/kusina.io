@@ -21,9 +21,9 @@ function AddRecipe({ onsetAdd }) {
       return;
     }
     const newRecipe = {
-      id: name.split(" ").join("-").toLowerCase(),
       name,
       imageUrl,
+       author: "Alex Smith",
       category,
       ingredients,
       instructions,
@@ -70,7 +70,7 @@ function AddRecipe({ onsetAdd }) {
   const initialState = {
     name: "",
     imageUrl: "curry.jpg",
-    category: "",
+    category: "Veg",
     instructions: [""],
     cookingTime: "",
     ingredients: [],
@@ -90,7 +90,7 @@ function AddRecipe({ onsetAdd }) {
       return;
     }
     const newIng = {
-      id: Math.random() * 1000,
+      
       name: currentIng,
       quantity: currentQaunt,
     };

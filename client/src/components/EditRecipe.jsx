@@ -6,9 +6,10 @@ function EditRecipe({ currentRecipe, onSetEdit }) {
   const { recipes, updateRecipes } = useRecipe();
 
   function handleSetEdit() {
+    console.log(currentRecipe);
     onSetEdit((edit) => !edit);
   }
-  function handleUpdateRecipe(e) {
+  async function handleUpdateRecipe(e) {
     e.preventDefault();
     const updatedRecipes = recipes.map((recipe) => {
       return recipe === currentRecipe
@@ -23,9 +24,35 @@ function EditRecipe({ currentRecipe, onSetEdit }) {
           }
         : recipe;
     });
+    // api call
+    const res = await fetch(
+      `http://127.0.0.1:8000/recipebook/admin/recipes/${currentRecipe.id}/`,
+      {
+        method: "PUT",
+        headers: {
+          Authorization: `JWT ${localStorage.getItem("user")}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          category,
+          author: "Alex Smith",
+          imageUrl,
+          instructions,
+          cookingTime,
+          ingredients: ingredients.map((ing) => {
+            return { name: ing.name, quantity: ing.quantity };
+          }),
+        }),
+      }
+    );
 
-    updateRecipes(updatedRecipes);
-    onSetEdit(false);
+    if (!res.ok) {
+      console.log(res);
+    } else {
+      updateRecipes(updatedRecipes);
+      onSetEdit(false);
+    }
   }
   function reducer(state, action) {
     switch (action.type) {
@@ -65,7 +92,6 @@ function EditRecipe({ currentRecipe, onSetEdit }) {
     dispatch,
   ] = useReducer(reducer, initialState);
 
-  console.log(ingredients);
   const [currentIng, setCurrentIng] = useState("");
   const [currentQaunt, setCurrentQuant] = useState("");
 
@@ -76,7 +102,6 @@ function EditRecipe({ currentRecipe, onSetEdit }) {
       return;
     }
     const newIng = {
-      id: Math.random() * 1000,
       name: currentIng,
       quantity: currentQaunt,
     };
@@ -95,7 +120,7 @@ function EditRecipe({ currentRecipe, onSetEdit }) {
       ></div>
       <form className=" bg-[#fff] text-black flex flex-col gap-3 px-5 py-7 w-[450px] rounded-md ">
         <img
-        width={20}
+          width={20}
           src="close.svg"
           onClick={handleSetEdit}
           className=" select-none cursor-pointer  absolute left-[92%] top-[1.8%]  "
@@ -104,9 +129,21 @@ function EditRecipe({ currentRecipe, onSetEdit }) {
           <lable className="font-medium capitalize text-lg">name</lable>
           <input
             value={name}
-            onChange={(e) =>
-              dispatch({ type: "name", payload: e.target.value })
-            }
+            onChange={(e) => {
+              console.log({
+                
+                name,
+                category,
+                author: "Alex Smith",
+                imageUrl,
+                instructions,
+                cookingTime,
+                ingredients:ingredients.map((ing) => {
+                  return { name: ing.name, quantity: ing.quantity };
+                }),
+              });
+              dispatch({ type: "name", payload: e.target.value });
+            }}
             className="outline-[#ccc] border-1 rounded-sm px-1 py-2 border-[#ccc]"
             placeholder="Avocado Salad"
           ></input>

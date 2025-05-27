@@ -9,7 +9,7 @@ function Recipe() {
   const recipe = recipes.find((recipe) => recipe.id === id);
   return (
     <main>
-      <Nav src={"../logo-2.svg"} />
+      <Nav src={"../logo-2.svg"} searchBar={false} />
       <div
         className="flex w-[80%] m-auto gap-2 mt-8 items-center text-primary cursor-pointer text-[20px]"
         onClick={() => navigate(-1)}

@@ -40,7 +40,12 @@ function RecipesContext({ children }) {
   useEffect(function () {
     async function getData() {
       dispatch({ type: "loading" });
-      const res = await fetch("http://localhost:3000/recipes");
+      const res = await fetch("http://127.0.0.1:8000/recipebook/recipes/", {
+        method: "GET",
+        headers: {
+          Authorization: `JWT ${localStorage.getItem("user")}`,
+        },
+      });
       const data = await res.json();
       dispatch({ type: "recipes", payload: data });
     }
@@ -58,8 +63,21 @@ function RecipesContext({ children }) {
   function updateRecipes(data) {
     dispatch({ type: "recipes", payload: data });
   }
-  function addRecipe(data) {
-    dispatch({ type: "add/recipe", payload: data });
+  async function addRecipe(data) {
+    console.log(data);
+    const res = await fetch("http://127.0.0.1:8000/recipebook/admin/recipes/", {
+      method: "POST",
+      headers: {
+        Authorization: `JWT ${localStorage.getItem("user")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) {
+      console.log(res);
+    } else {
+      dispatch({ type: "add/recipe", payload: data });
+    }
   }
 
   const userFavouriteList = favourite.map((fav) => fav.id);

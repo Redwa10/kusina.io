@@ -1,5 +1,4 @@
 function IngredientTag({ ing, onUpdateIng, ingredients }) {
-  console.log(ing);
 
   function handleUpdate(id) {
     const newIngs = ingredients.filter((ing) => ing.id !== id);

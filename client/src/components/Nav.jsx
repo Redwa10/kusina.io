@@ -1,15 +1,19 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import Button from "./Button";
 import { useRecipe } from "../contexts/RecipesContext";
 import { useAuth } from "../contexts/AuthContext";
+import { useEffect } from "react";
 
 function Nav({ src = "logo-2.svg", searchBar = true }) {
   const { search, onSearch } = useRecipe();
   const { logout } = useAuth();
   const navigate = useNavigate();
+  const location = useLocation();
 
+  useEffect(() => {
+    onSearch("");
+  }, [location]);
   // logout
-
   function handleLogout() {
     logout();
     navigate("/login");
@@ -34,12 +38,15 @@ function Nav({ src = "logo-2.svg", searchBar = true }) {
             </li>
           </ul>
           {searchBar && (
-            <input
-              className="outline-0 border-1 border-[#c3c3c3] text-[#222222] rounded-lg px-2 py-1"
-              value={search}
-              onChange={(e) => onSearch(e.target.value.toLowerCase())}
-              placeholder="search a recipe"
-            ></input>
+            <div className="flex items-center gap-1.5 border-1 border-[#c3c3c3] text-[#222222] rounded-lg px-2 py-1">
+              <img className="mt-1" width={18} src="search.svg" alt="search" />
+              <input
+                className="outline-0 "
+                value={search}
+                onChange={(e) => onSearch(e.target.value.toLowerCase())}
+                placeholder="search a recipe"
+              ></input>
+            </div>
           )}
           <button
             onClick={handleLogout}
