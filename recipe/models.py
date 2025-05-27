@@ -30,11 +30,11 @@ class Recipe(models.Model):
         return self.name
 
 class Favorite(models.Model):
-    recipe = models.ForeignKey(Recipe, on_delete= models.CASCADE)
+    id = models.OneToOneField(Recipe, db_column= "id", primary_key= True, on_delete= models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete= models.CASCADE)
 
     class Meta:
-        unique_together = ("recipe", "user")
+        unique_together = ("id", "user")
 
 
 class Ingredient(models.Model):
