@@ -7,9 +7,7 @@ import { useEffect } from "react";
 function Nav({ src = "logo-2.svg", searchBar = true }) {
   const { search, onSearch } = useRecipe();
   const { logout,adminNav} = useAuth();
-  if(adminNav){
-    console.log("sdasdasdas")
-  }
+
   const navigate = useNavigate();
   const location = useLocation();
 

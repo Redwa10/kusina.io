@@ -7,6 +7,7 @@ function AuthContext({ children }) {
   const [user, setUser] = useState(null);
   const [authLoading, setAuthLoading] = useState(true);
   const [adminNav, setAdminNav] = useState(false);
+  const [error,setError]= useState("")
   //   get user
   useEffect(function () {
     async function getUser() {
@@ -50,7 +51,13 @@ function AuthContext({ children }) {
     });
 
     if (!res.ok) {
-      console.log(await res.json());
+      const data =await res.json()
+      console.log(data)
+      if(data.detail){
+        setError(data.detail)
+      }
+      console.log(error)
+      // setError(await res.json());
       setAuthLoading(false);
       return false;
     }
@@ -94,7 +101,7 @@ function AuthContext({ children }) {
 
   return (
     <authProvider.Provider
-      value={{ user, authLoading, logout, login, signup, adminNav }}
+      value={{ user, authLoading, logout, login, signup, adminNav,error,setError }}
     >
       {children}
     </authProvider.Provider>

@@ -1,14 +1,26 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { useState } from "react";
+import Error from "../components/Error";
 
 function Login() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const { login, authLoading } = useAuth();
+  const { login, authLoading,error,setError } = useAuth();
   const navigate = useNavigate();
+
+
   async function handleLogin(e) {
     e.preventDefault();
+
+    if(username===""){
+      setError("Username is required")
+      return
+    }
+    if(password===""){
+      setError("password is required")
+      return
+    }
     const log = await login(username, password);
     console.log(log);
     if (log && !authLoading) navigate("/home");
@@ -16,7 +28,7 @@ function Login() {
   return (
     <main className="flex flex-col justify-center items-center bg-[url(background.jpg)]   bg-cover bg-center min-w-screen min-h-screen">
       <div className=" bg-[rgba(0,0,0,0.4)] fixed top-0 left-0  min-w-screen min-h-screen"></div>
-
+{error && <Error>{error}</Error>}
       <div className="relative z-1 bg-white flex flex-col px-[50px] py-[80px] rounded-[21px] ">
         <img width={310} height={198} src="logo-2.svg"></img>
         <form className="flex flex-col justify-center items-center">
