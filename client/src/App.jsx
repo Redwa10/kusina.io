@@ -69,10 +69,10 @@ function App() {
                 path="/admin"
                 element={
                   <ProtectedRoute>
-                    {/* <RoleBasedRoute> */}
+                    <RoleBasedRoute>
                       {" "}
                       <Admin />
-                    {/* </RoleBasedRoute> */}
+                    </RoleBasedRoute>
                   </ProtectedRoute>
                 }
               >
