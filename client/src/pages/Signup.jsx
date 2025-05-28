@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
+import Error from "../components/Error";
 
 function Signup() {
   const [username, setUsername] = useState("");
@@ -9,10 +10,33 @@ function Signup() {
   const [full_name, setFullname] = useState("");
   const [role, setRole] = useState("user");
 
-  const { signup, authLoading } = useAuth();
+  const { signup, authLoading,error,setError } = useAuth();
   const navigate = useNavigate();
+
   async function handleSignup(e) {
     e.preventDefault();
+if(full_name===""){
+      setError("Name can not be empty")
+      return
+    }
+     if(email===""){
+      setError("Email can not be empty")
+      return
+    }
+    if(username===""){
+      setError("Username can not be empty")
+      return
+    }
+    
+   
+    if(password===""){
+      setError("Password can not be empty")
+      return
+    }else if(password.length<8){
+      setError("Password must be greater than 8 ")
+      return
+    }
+    
     const sign = await signup(username, password, email, full_name, role);
     if (sign) {
       navigate("/login");
@@ -21,6 +45,8 @@ function Signup() {
   return (
     <main className="flex flex-col justify-center items-center bg-[url(background.jpg)]   bg-cover bg-center min-w-screen min-h-screen">
       <div className=" bg-[rgba(0,0,0,0.4)] fixed top-0 left-0  min-w-screen min-h-screen"></div>
+      {error && <Error>{error}</Error>}
+
 
       <div className="relative z-1 bg-white flex flex-col px-[55px] py-[36px] rounded-[21px] ">
         <img width={310} height={198} src="logo-2.svg"></img>

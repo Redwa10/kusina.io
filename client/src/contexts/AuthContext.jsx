@@ -90,7 +90,11 @@ function AuthContext({ children }) {
     });
     console.log(email);
     if (!res.ok) {
-      console.log(await res.json());
+      const data= await res.json()
+      if(data.username){
+        setError(data.username[0])
+      }
+      // console.log(await res.json());
       setAuthLoading(false);
       return false;
     }
