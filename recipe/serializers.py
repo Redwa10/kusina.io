@@ -70,7 +70,7 @@ class FavoriteSerializers(serializers.ModelSerializer):
     user = serializers.CharField(read_only = True)
     class Meta:
         model = Favorite
-        fields = ['id', 'user', 'recipe']
+        fields = ['id', 'user']
 
 class CatagoriesSerializers(serializers.ModelSerializer):
     class Meta:
