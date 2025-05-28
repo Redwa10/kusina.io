@@ -6,7 +6,10 @@ import { useEffect } from "react";
 
 function Nav({ src = "logo-2.svg", searchBar = true }) {
   const { search, onSearch } = useRecipe();
-  const { logout,user } = useAuth();
+  const { logout,adminNav} = useAuth();
+  if(adminNav){
+    console.log("sdasdasdas")
+  }
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -48,14 +51,14 @@ function Nav({ src = "logo-2.svg", searchBar = true }) {
               ></input>
             </div>
           )}
-          {user?.role==="admin" &&<Link to={"/admin"}>
-           <button
-            onClick={handleLogout}
+           
+           {adminNav ? <button onClick={()=>navigate("/admin")}
+            
             className="drop-shadow-md text-center transition ease-in font-light text-lg  text-white bg-primary border-1 border-primary px-5 py-1 rounded-[100px] hover:bg-white cursor-pointer hover:text-primary"
           >
             Dashboard
-          </button>
-          </Link>}
+          </button>:""}
+         
          
           <button
             onClick={handleLogout}

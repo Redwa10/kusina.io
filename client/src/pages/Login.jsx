@@ -6,12 +6,12 @@ function Login() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const { login, authLoading } = useAuth();
-  const  navigate  = useNavigate();
+  const navigate = useNavigate();
   async function handleLogin(e) {
     e.preventDefault();
     const log = await login(username, password);
     console.log(log);
-   if(log) navigate("/home")
+    if (log && !authLoading) navigate("/home");
   }
   return (
     <main className="flex flex-col justify-center items-center bg-[url(background.jpg)]   bg-cover bg-center min-w-screen min-h-screen">
