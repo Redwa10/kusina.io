@@ -14,14 +14,16 @@ import AdminLogin from "./pages/AdminLogin";
 import { AuthContext } from "./contexts/AuthContext";
 import ProtectedRoute from "./pages/ProtectedRoute";
 import RoleBasedRoute from "./pages/RoleBasedRoute";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
     <div>
       <AuthContext>
         <RecipesContext>
-          <BrowserRouter>
+        <BrowserRouter>
             <Routes>
+              <Route path="*" element={<NotFound/>}></Route>
               <Route index element={<Homepage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
