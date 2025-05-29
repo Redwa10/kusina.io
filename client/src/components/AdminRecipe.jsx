@@ -1,11 +1,13 @@
 import { memo } from "react";
 import { useRecipe } from "../contexts/RecipesContext";
+import { useNavigate } from "react-router-dom";
 
 const AdminRecipe = memo(function AdminRecipe({
   recipe,
   setCurrentRecipe,
   onSetEdit,
 }) {
+  const navigate = useNavigate()
   const { recipes, updateRecipes } = useRecipe();
   async function handleDelete(recipe) {
     const res = await fetch(
@@ -49,6 +51,15 @@ const AdminRecipe = memo(function AdminRecipe({
         </div>
       </div>
       <div className="flex items-center justify-center gap-5">
+        <div
+          onClick={() => {
+            navigate(`/recipes/${recipe.id}`)
+          }}
+          className="flex select-none  flex-col items-center cursor-pointer"
+        >
+          <img className="ml-2" width={30} src="view.svg" alt="edit" />
+          <span className="text-[rgba(146, 139, 139, 1)]">View</span>
+        </div>
         <div
           onClick={() => {
             onSetEdit((edit) => !edit);

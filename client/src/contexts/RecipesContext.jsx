@@ -1,9 +1,11 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
 import Favourite from "../pages/Favourite";
+import { useAuth } from "./AuthContext";
 
 const recipesProvider = createContext();
 
 function reducer(state, action) {
+  
   switch (action.type) {
     case "recipes":
       return { ...state, recipes: action.payload, isLoading: false };
@@ -28,6 +30,9 @@ function reducer(state, action) {
   }
 }
 function RecipesContext({ children }) {
+  const {user} =useAuth();
+
+
   const [{ recipes, favourite, isLoading, search }, dispatch] = useReducer(
     reducer,
     {
@@ -40,7 +45,9 @@ function RecipesContext({ children }) {
   useEffect(function () {
     async function getData() {
       dispatch({ type: "loading" });
-      const res = await fetch("http://127.0.0.1:8000/recipebook/recipes/", {
+      
+      if(user){
+        const res = await fetch("http://127.0.0.1:8000/recipebook/recipes/", {
         method: "GET",
         headers: {
           Authorization: `JWT ${localStorage.getItem("user")}`,
@@ -48,23 +55,26 @@ function RecipesContext({ children }) {
       });
       const data = await res.json();
       dispatch({ type: "recipes", payload: data });
+      }
     }
     getData();
-  }, []);
+  }, [user]);
 
   useEffect(function () {
     async function getFav() {
-      const res = await fetch("http://localhost:4000/favourite");
+     if(user){
+       const res = await fetch("http://localhost:4000/favourite");
       const favourite = await res.json();
       dispatch({ type: "favourite", payload: favourite });
+     }
     }
     getFav();
-  }, []);
+  }, [user]);
   function updateRecipes(data) {
     dispatch({ type: "recipes", payload: data });
   }
   async function addRecipe(data) {
-    console.log(data);
+    
     const res = await fetch("http://127.0.0.1:8000/recipebook/admin/recipes/", {
       method: "POST",
       headers: {
