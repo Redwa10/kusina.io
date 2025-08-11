@@ -30,7 +30,8 @@ class Recipe(models.Model):
         return self.name
 
 class Favorite(models.Model):
-    id = models.OneToOneField(Recipe, db_column= "id", primary_key= True, on_delete= models.CASCADE)
+    favorite_id = models.AutoField(primary_key= True)
+    id = models.ForeignKey(Recipe, db_column= "id",  on_delete= models.CASCADE)
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete= models.CASCADE)
 
     class Meta:

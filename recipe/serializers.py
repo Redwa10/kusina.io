@@ -71,6 +71,7 @@ class FavoriteSerializers(serializers.ModelSerializer):
     class Meta:
         model = Favorite
         fields = ['id', 'user']
+        
 
 class CatagoriesSerializers(serializers.ModelSerializer):
     class Meta:
